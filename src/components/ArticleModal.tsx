@@ -36,7 +36,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#26231E]/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl my-8 bg-[#FAF5EB] border border-[#DDD1BD] rounded-2xl shadow-xl p-6 sm:p-8 text-[#2E2A24] max-h-[88vh] overflow-y-auto">
+      <div className="article-dialog relative w-full max-w-2xl my-8 bg-[#FAF5EB] border border-[#DDD1BD] rounded-2xl shadow-xl p-6 sm:p-8 text-[#2E2A24] max-h-[88vh] overflow-y-auto">
         
         {/* Top bar */}
         <div className="flex items-center justify-between pb-4 border-b border-[#EAE0CE] gap-4">

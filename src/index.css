@@ -220,3 +220,46 @@ body:has(.dark-mode) {
 .dark-mode .blog-dialog .text-slate-100 { color: #f8fafc !important; }
 .dark-mode .blog-dialog .text-slate-300 { color: #d7dee8 !important; }
 .dark-mode .blog-dialog .text-slate-400 { color: #aebdce !important; }
+
+/* Indonesian article reader uses explicit light-theme tokens, so map each dialog surface and text token in dark mode. */
+.dark-mode .article-dialog {
+  background-color: #18202b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+.dark-mode .article-dialog [class*="border-[#EAE0CE]"],
+.dark-mode .article-dialog [class*="border-[#E8DFC9]"],
+.dark-mode .article-dialog [class*="border-[#DDD1BD]"] {
+  border-color: #334155 !important;
+}
+.dark-mode .article-dialog [class*="bg-[#EFE6D6]"] {
+  background-color: #202b3a !important;
+}
+.dark-mode .article-dialog [class*="bg-[#EFE6D6]"]:hover {
+  background-color: #2d3b4f !important;
+}
+.dark-mode .article-dialog [class*="text-[#231F1B]"],
+.dark-mode .article-dialog [class*="text-[#24201C]"],
+.dark-mode .article-dialog [class*="text-[#2E2A24]"] {
+  color: #f8fafc !important;
+}
+.dark-mode .article-dialog [class*="text-[#423C33]"],
+.dark-mode .article-dialog [class*="text-[#453F36]"],
+.dark-mode .article-dialog [class*="text-[#544E42]"],
+.dark-mode .article-dialog [class*="text-[#595246]"] {
+  color: #d7dee8 !important;
+}
+.dark-mode .article-dialog [class*="bg-[#EDE3D0]"] {
+  background-color: #202b3a !important;
+  color: #cbd5e1 !important;
+}
+.dark-mode .article-dialog [class*="bg-[#2D2823]"] {
+  background-color: #d97757 !important;
+  color: #10141b !important;
+}
+.dark-mode .article-dialog [class*="bg-[#2D2823]"]:hover {
+  background-color: #e58a6c !important;
+}
+.dark-mode .article-dialog [class*="text-[#8C5248]"] {
+  color: #f0a083 !important;
+}
