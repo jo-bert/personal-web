@@ -129,3 +129,27 @@ body:has(.dark-mode) {
 
 .dark-mode ::-webkit-scrollbar-track { background: #151b24; }
 .dark-mode ::-webkit-scrollbar-thumb { background: #475569; }
+
+/* Blog reader content follows the active theme instead of retaining a dark-only palette. */
+.blog-dialog .border-slate-800 { border-color: #E5DBC7; }
+.blog-dialog .bg-slate-800 { background-color: #EFE7D8; }
+.blog-dialog .bg-slate-800:hover { background-color: #E5DBC7; }
+.blog-dialog .bg-slate-950 { background-color: #EFE7D8; }
+.blog-dialog .text-white { color: #2D2A26; }
+.blog-dialog .text-slate-100 { color: #2D2A26; }
+.blog-dialog .text-slate-300 { color: #544E42; }
+.blog-dialog .text-slate-400 { color: #6B6356; }
+
+.dark-mode .blog-dialog {
+  background-color: #18202b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+.dark-mode .blog-dialog .border-slate-800 { border-color: #334155 !important; }
+.dark-mode .blog-dialog .bg-slate-800,
+.dark-mode .blog-dialog .bg-slate-950 { background-color: #202b3a !important; }
+.dark-mode .blog-dialog .bg-slate-800:hover { background-color: #2d3b4f !important; }
+.dark-mode .blog-dialog .text-white,
+.dark-mode .blog-dialog .text-slate-100 { color: #f8fafc !important; }
+.dark-mode .blog-dialog .text-slate-300 { color: #d7dee8 !important; }
+.dark-mode .blog-dialog .text-slate-400 { color: #aebdce !important; }
