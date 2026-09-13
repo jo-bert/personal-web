@@ -41,13 +41,13 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div className="tools-page min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       
       {/* Back button */}
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F0E8DA] hover:bg-[#E8DFC9] text-[#4A453E] border border-[#DDD2BE] text-sm font-medium transition-colors"
+          className="tools-back-button inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F0E8DA] hover:bg-[#E8DFC9] text-[#4A453E] border border-[#DDD2BE] text-sm font-medium transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Profile</span>
@@ -70,8 +70,10 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
       {/* Main Switcher: Daily Web Tools vs Developer Tools */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-[#E6DDCC] mb-8">
         
-        <div className="flex gap-2 p-1 rounded-xl bg-[#EDE4D4] border border-[#DFD5C3]">
+        <div className="tools-switcher flex gap-2 p-1 rounded-xl bg-[#EDE4D4] border border-[#DFD5C3]">
           <button
+            type="button"
+            aria-pressed={activeTab === 'daily'}
             onClick={() => setActiveTab('daily')}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
               activeTab === 'daily'
@@ -84,6 +86,8 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
           </button>
 
           <button
+            type="button"
+            aria-pressed={activeTab === 'dev'}
             onClick={() => setActiveTab('dev')}
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
               activeTab === 'dev'
@@ -104,7 +108,7 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
             placeholder="Search tools..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#FCFAF5] border border-[#DFD5C3] text-sm text-[#2D2A26] placeholder-[#6E675B] focus:outline-none focus:border-[#B5A58C] transition-colors"
+            className="tools-search w-full pl-10 pr-4 py-2 rounded-xl bg-[#FCFAF5] border border-[#DFD5C3] text-sm text-[#2D2A26] placeholder-[#6E675B] focus:outline-none focus:border-[#B5A58C] transition-colors"
           />
         </div>
 
@@ -125,7 +129,7 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
                 href={tool.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                className="tools-card group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -169,7 +173,7 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
                 href={tool.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                className="tools-card group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">

@@ -130,6 +130,73 @@ body:has(.dark-mode) {
 .dark-mode ::-webkit-scrollbar-track { background: #151b24; }
 .dark-mode ::-webkit-scrollbar-thumb { background: #475569; }
 
+/* Tools catalog keeps its warm accents while switching every surface and text token in dark mode. */
+.dark-mode .tools-page {
+  color: #e5edf5;
+}
+.dark-mode .tools-page .tools-back-button {
+  background-color: #202b3a !important;
+  border-color: #3b4b60 !important;
+  color: #dbe7f3 !important;
+}
+.dark-mode .tools-page .tools-back-button:hover {
+  background-color: #2d3b4f !important;
+}
+.dark-mode .tools-page .tools-switcher {
+  background-color: #18202b !important;
+  border-color: #334155 !important;
+}
+.dark-mode .tools-page .tools-switcher button {
+  color: #aebdce !important;
+}
+.dark-mode .tools-page .tools-switcher button[aria-pressed="true"],
+.dark-mode .tools-page .tools-switcher button:hover {
+  color: #f8fafc !important;
+}
+.dark-mode .tools-page .tools-switcher button[aria-pressed="true"] {
+  background-color: #263447 !important;
+}
+.dark-mode .tools-page .tools-search {
+  background-color: #18202b !important;
+  border-color: #3b4b60 !important;
+  color: #f8fafc !important;
+}
+.dark-mode .tools-page .tools-search::placeholder {
+  color: #8fa1b5 !important;
+}
+.dark-mode .tools-page .tools-card {
+  background-color: #18202b !important;
+  border-color: #334155 !important;
+}
+.dark-mode .tools-page .tools-card:hover {
+  background-color: #202b3a !important;
+  border-color: #64748b !important;
+}
+.dark-mode .tools-page .tools-card h3 {
+  color: #f8fafc !important;
+}
+.dark-mode .tools-page .tools-card p,
+.dark-mode .tools-page > div > div > div:first-child,
+.dark-mode .tools-page [class*="text-[#615B52]"],
+.dark-mode .tools-page [class*="text-[#544E44]"],
+.dark-mode .tools-page [class*="text-[#544E42]"],
+.dark-mode .tools-page [class*="text-[#6B6459]"],
+.dark-mode .tools-page [class*="text-[#6E675B]"] {
+  color: #cbd5e1 !important;
+}
+.dark-mode .tools-page [class*="text-[#24211E]"],
+.dark-mode .tools-page [class*="text-[#2D2A26]"] {
+  color: #f8fafc !important;
+}
+.dark-mode .tools-page [class*="border-[#E6DDCC]"],
+.dark-mode .tools-page [class*="border-[#DFD5C3]"],
+.dark-mode .tools-page [class*="border-[#E8DEC8]"] {
+  border-color: #334155 !important;
+}
+.dark-mode .tools-page .tools-card .text-\[\#6B6152\] {
+  color: #aebdce !important;
+}
+
 /* Blog reader content follows the active theme instead of retaining a dark-only palette. */
 .blog-dialog .border-slate-800 { border-color: #E5DBC7; }
 .blog-dialog .bg-slate-800 { background-color: #EFE7D8; }
