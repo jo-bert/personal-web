@@ -83,8 +83,26 @@
 .dark-mode [class*="text-[#544E42]"],
 .dark-mode [class*="text-[#5C5549]"],
 .dark-mode [class*="text-[#6B6356]"],
-.dark-mode [class*="text-[#423C33]"] {
+.dark-mode [class*="text-[#423C33]"],
+.dark-mode [class*="text-[#4A443B]"],
+.dark-mode [class*="text-[#544D41]"],
+.dark-mode [class*="text-[#665F53]"],
+.dark-mode [class*="text-[#5C554A]"],
+.dark-mode [class*="text-[#595246]"] {
   color: #cbd5e1 !important;
+}
+
+.dark-mode [class*="text-[#24211E]"],
+.dark-mode [class*="text-[#3D382E]"] {
+  color: #f1f5f9 !important;
+}
+
+.dark-mode [class*="border-[#EAE0CE]"] {
+  border-color: #334155 !important;
+}
+
+.dark-mode [class*="divide-[#EAE0CE]"] > :not(:last-child) {
+  border-color: #334155 !important;
 }
 
 .dark-mode [class*="bg-[#2D2823]"] {
