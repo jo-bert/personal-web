@@ -45,3 +45,69 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #C2B49D;
 }
+
+/* Dark mode keeps the warm editorial accent while separating surfaces clearly. */
+.dark-mode {
+  color-scheme: dark;
+  background: #10141b;
+  color: #edf2f7;
+}
+
+.dark-mode [class*="bg-[#F8F4EC]"],
+.dark-mode [class*="bg-[#FAF5EA]"],
+.dark-mode [class*="bg-[#EFE7D8]"],
+.dark-mode [class*="bg-[#EDE3D0]"] {
+  background-color: #18202b !important;
+}
+
+.dark-mode [class*="border-[#E8DFC9]"],
+.dark-mode [class*="border-[#E5DBC7]"],
+.dark-mode [class*="border-[#DDD0B9]"],
+.dark-mode [class*="border-[#DDD2BD]"],
+.dark-mode [class*="border-[#E8DFC9]"] {
+  border-color: #334155 !important;
+}
+
+.dark-mode [class*="text-[#23201C]"],
+.dark-mode [class*="text-[#24201C]"],
+.dark-mode [class*="text-[#292521]"],
+.dark-mode [class*="text-[#231F1B]"],
+.dark-mode [class*="text-[#25221E]"],
+.dark-mode [class*="text-[#2D2A26]"],
+.dark-mode [class*="text-[#383229]"] {
+  color: #f8fafc !important;
+}
+
+.dark-mode [class*="text-[#474137]"],
+.dark-mode [class*="text-[#5E574D]"],
+.dark-mode [class*="text-[#544E42]"],
+.dark-mode [class*="text-[#5C5549]"],
+.dark-mode [class*="text-[#6B6356]"],
+.dark-mode [class*="text-[#423C33]"] {
+  color: #cbd5e1 !important;
+}
+
+.dark-mode [class*="bg-[#2D2823]"] {
+  background-color: #e2b887 !important;
+  color: #17120d !important;
+}
+
+.dark-mode [class*="bg-[#2D2823]"]:hover {
+  background-color: #f0c995 !important;
+}
+
+.dark-mode header {
+  background-color: rgba(16, 20, 27, 0.88) !important;
+  border-color: #334155 !important;
+}
+
+.dark-mode body,
+body:has(.dark-mode) {
+  background-color: #10141b;
+  background-image: radial-gradient(#263242 0.75px, transparent 0.75px), radial-gradient(#18202b 0.75px, #10141b 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.dark-mode ::-webkit-scrollbar-track { background: #151b24; }
+.dark-mode ::-webkit-scrollbar-thumb { background: #475569; }

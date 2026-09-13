@@ -10,6 +10,7 @@ const ArticleModal = lazy(() => import('./components/ArticleModal.tsx').then((m)
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'tools'>('home');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [isDark, setIsDark] = useState(() => window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false);
 
   // Sync hash with page
   useEffect(() => {
@@ -36,10 +37,10 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F4EC] text-[#2D2A26] flex flex-col font-sans selection:bg-[#E8D6BD] selection:text-[#382D1B]">
+    <div className={`min-h-screen text-[#2D2A26] flex flex-col font-sans selection:bg-[#E8D6BD] selection:text-[#382D1B] ${isDark ? 'dark-mode' : ''}`}>
       
       {/* Top Header */}
-      <Header currentPage={currentPage} onNavigate={navigateTo} />
+      <Header currentPage={currentPage} onNavigate={navigateTo} isDark={isDark} onToggleTheme={() => setIsDark((dark) => !dark)} />
 
       {/* Main View */}
       <main className="flex-1">
