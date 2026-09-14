@@ -325,7 +325,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenTools, onOpenArticle }
             </h3>
 
             {PROFILE_DATA.certifications.map((cert, idx) => (
-              <div key={idx} className="bg-[#FAF5EA] border border-[#E8DFC9] rounded-2xl p-5 space-y-1">
+              <div key={idx} className="certification-card bg-[#FAF5EA] border border-[#E8DFC9] rounded-2xl p-5 space-y-1">
                 <div className="flex items-start justify-between gap-2">
                   <h4 className="text-sm font-bold text-[#24211E]">
                     {cert.name}

@@ -11,11 +11,11 @@
   }
 
   body {
-    background-color: #F8F4EC;
-    color: #2D2A26;
+    background-color: #F2F7FC;
+    color: #1E293B;
     background-image: 
-      radial-gradient(#E8DEC8 0.75px, transparent 0.75px),
-      radial-gradient(#EFE8DB 0.75px, #F8F4EC 0.75px);
+      radial-gradient(#D7E5F2 0.75px, transparent 0.75px),
+      radial-gradient(#E5EEF7 0.75px, #F2F7FC 0.75px);
     background-size: 30px 30px;
     background-position: 0 0, 15px 15px;
     background-attachment: fixed;
@@ -27,23 +27,23 @@
   }
 }
 
-/* Custom scrollbar in warm papyrus tones */
+/* Subtle blue scrollbar keeps the light theme cohesive. */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3ECE0;
+  background: #E8F0F8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8CCB7;
+  background: #B8CDE0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C2B49D;
+  background: #91B1CC;
 }
 
 /* Dark mode keeps the warm editorial accent while separating surfaces clearly. */
@@ -129,6 +129,21 @@ body:has(.dark-mode) {
 
 .dark-mode ::-webkit-scrollbar-track { background: #151b24; }
 .dark-mode ::-webkit-scrollbar-thumb { background: #475569; }
+
+/* Certifications use a lighter brown surface in dark mode for clearer separation. */
+.dark-mode .certification-card {
+  background-color: #493a2f !important;
+  border-color: #80664d !important;
+}
+.dark-mode .certification-card h4 {
+  color: #fff4e6 !important;
+}
+.dark-mode .certification-card span {
+  color: #ead8c4 !important;
+}
+.dark-mode .certification-card p {
+  color: #f0dfcc !important;
+}
 
 /* Tools catalog keeps its warm accents while switching every surface and text token in dark mode. */
 .dark-mode .tools-page {
