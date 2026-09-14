@@ -14,9 +14,8 @@
   "type": "module",
   "devDependencies": {
     "@oxlint/plugins": "1.82.0",
-    "@preact/preset-vite": "^2.7.0",
+    "@preact/preset-vite": "^2.10.6",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/preact": "^10.17.0",
     "oxlint": "1.82.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",

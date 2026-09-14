@@ -77,7 +77,7 @@ export const DailyToolsSection: React.FC = () => {
               type="text"
               placeholder="Search tools (e.g. 8mb, PDF, Photoshop, convert)..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.currentTarget.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
             />
           </div>

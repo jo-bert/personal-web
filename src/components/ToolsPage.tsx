@@ -107,7 +107,7 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
             type="text"
             placeholder="Search tools..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.currentTarget.value)}
             className="tools-search w-full pl-10 pr-4 py-2 rounded-xl bg-[#FCFAF5] border border-[#DFD5C3] text-sm text-[#2D2A26] placeholder-[#6E675B] focus:outline-none focus:border-[#B5A58C] transition-colors"
           />
         </div>

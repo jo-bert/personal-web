@@ -4,6 +4,8 @@ export interface DevTool {
   badge: string;
   tagline: string;
   url: string;
+  verdict?: string;
+  whyAlbertUsesIt?: string;
 }
 
 export const DEV_ARSENAL_DATA: DevTool[] = [
