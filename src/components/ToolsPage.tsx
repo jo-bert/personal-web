@@ -9,14 +9,18 @@ import {
 } from 'lucide-react';
 import { DAILY_TOOLS_DATA } from '../data/dailyTools.ts';
 import { DEV_ARSENAL_DATA } from '../data/devArsenal.ts';
+import { Language, TRANSLATIONS } from '../i18n/translations.ts';
 
 interface ToolsPageProps {
+  language: Language;
   onBack: () => void;
 }
 
-export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
+export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
   const [activeTab, setActiveTab] = useState<'daily' | 'dev'>('daily');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const t = TRANSLATIONS[language].toolsPage;
 
   // Filter daily tools
   const filteredDaily = useMemo(() => {
@@ -47,68 +51,68 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="tools-back-button inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#F0E8DA] hover:bg-[#E8DFC9] text-[#4A453E] border border-[#DDD2BE] text-sm font-medium transition-colors"
+          className="tools-back-button inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--bg-surface-subtle)] hover:bg-[var(--bg-surface-hover)] text-[var(--text-secondary)] border border-[var(--border-subtle)] text-sm font-medium transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Profile</span>
+          <span>{t.back}</span>
         </button>
       </div>
 
       {/* Page Title Header */}
       <div className="mb-10">
-        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8EFE6] text-[#425B3E] border border-[#C8DAC3] mb-3">
-          Curated Catalog
+        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] mb-3">
+          {t.tag}
         </span>
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#24211E] tracking-tight">
-          Useful Tools & Recommended Utilities
+        <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+          {t.title}
         </h1>
-        <p className="mt-3 text-base text-[#615B52] leading-relaxed max-w-2xl">
-          A personal collection of zero-adware web tools for everyday file conversions, video compression, and document work — plus developer tools and engineering resources.
+        <p className="mt-3 text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+          {t.desc}
         </p>
       </div>
 
       {/* Main Switcher: Daily Web Tools vs Developer Tools */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-[#E6DDCC] mb-8">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border-subtle)] mb-8">
         
-        <div className="tools-switcher flex gap-2 p-1 rounded-xl bg-[#EDE4D4] border border-[#DFD5C3]">
+        <div className="tools-switcher flex gap-2 p-1 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
           <button
             type="button"
             aria-pressed={activeTab === 'daily'}
             onClick={() => setActiveTab('daily')}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
               activeTab === 'daily'
-                ? 'bg-[#FCFAF5] text-[#2D2A26] shadow-sm'
-                : 'text-[#6B6459] hover:text-[#2D2A26]'
+                ? 'bg-[var(--bg-surface)] text-[var(--accent-primary)] shadow-sm'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             }`}
           >
-            <Wrench className="w-4 h-4 text-[#8C5248]" />
-            <span>Daily Web Tools ({DAILY_TOOLS_DATA.length})</span>
+            <Wrench className="w-4 h-4" />
+            <span>{t.dailyTab} ({DAILY_TOOLS_DATA.length})</span>
           </button>
 
           <button
             type="button"
             aria-pressed={activeTab === 'dev'}
             onClick={() => setActiveTab('dev')}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
               activeTab === 'dev'
-                ? 'bg-[#FCFAF5] text-[#2D2A26] shadow-sm'
-                : 'text-[#6B6459] hover:text-[#2D2A26]'
+                ? 'bg-[var(--bg-surface)] text-[var(--accent-primary)] shadow-sm'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
             }`}
           >
-            <Terminal className="w-4 h-4 text-[#425B3E]" />
-            <span>Developer Stack ({DEV_ARSENAL_DATA.length})</span>
+            <Terminal className="w-4 h-4" />
+            <span>{t.devTab} ({DEV_ARSENAL_DATA.length})</span>
           </button>
         </div>
 
         {/* Search input */}
         <div className="relative flex-1 sm:max-w-xs">
-          <Search className="w-4 h-4 text-[#544E42] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[var(--text-muted)] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search tools..."
+            placeholder={t.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.currentTarget.value)}
-            className="tools-search w-full pl-10 pr-4 py-2 rounded-xl bg-[#FCFAF5] border border-[#DFD5C3] text-sm text-[#2D2A26] placeholder-[#6E675B] focus:outline-none focus:border-[#B5A58C] transition-colors"
+            className="tools-search w-full pl-10 pr-4 py-2 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent-primary)] transition-colors"
           />
         </div>
 
@@ -117,9 +121,9 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
       {/* Content Area */}
       {activeTab === 'daily' ? (
         <div>
-          <div className="mb-6 text-xs text-[#544E42] flex items-center justify-between">
+          <div className="mb-6 text-xs text-[var(--text-muted)] flex items-center justify-between">
             <span>Showing {filteredDaily.length} recommended utilities</span>
-            <span>Zero adware • Click any card to visit</span>
+            <span>{t.verifiedBadge}</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -129,29 +133,29 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
                 href={tool.url}
                 target="_blank"
                 rel="noreferrer"
-                className="tools-card group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-[#F5EFEB] text-[#6E5A4E] border border-[#DED3C9]">
+                    <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
                       {tool.tag}
                     </span>
                     <div className="flex items-center gap-2">
                       {tool.isFavorite && (
-                        <span className="inline-flex items-center gap-1 text-xs text-[#6B4E1B] bg-[#FBF1E1] px-2 py-0.5 rounded border border-[#E8D6BD]">
+                        <span className="inline-flex items-center gap-1 text-xs text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-medium">
                           <Sparkles className="w-3 h-3" />
                           <span>Favorite</span>
                         </span>
                       )}
-                      <ExternalLink className="w-4 h-4 text-[#6B6152] group-hover:text-[#8C5248] transition-colors" />
+                      <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#24211E] group-hover:text-[#8C5248] transition-colors">
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                     {tool.name}
                   </h3>
 
-                  <p className="mt-2 text-sm text-[#544E44] leading-relaxed">
+                  <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                     {tool.description}
                   </p>
                 </div>
@@ -161,9 +165,9 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
         </div>
       ) : (
         <div>
-          <div className="mb-6 text-xs text-[#544E42] flex items-center justify-between">
+          <div className="mb-6 text-xs text-[var(--text-muted)] flex items-center justify-between">
             <span>Showing {filteredDev.length} developer tools</span>
-            <span>Handpicked developer stack • Click any card to visit</span>
+            <span>Handpicked developer stack</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -173,21 +177,21 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
                 href={tool.url}
                 target="_blank"
                 rel="noreferrer"
-                className="tools-card group bg-[#FCFAF5] border border-[#E8DEC8] hover:border-[#BFAF95] hover:bg-[#FFFDF9] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-[#E8EFE6] text-[#425B3E] border border-[#C8DAC3]">
+                    <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">
                       {tool.badge}
                     </span>
-                    <ExternalLink className="w-4 h-4 text-[#6B6152] group-hover:text-[#8C5248] transition-colors" />
+                    <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#24211E] group-hover:text-[#8C5248] transition-colors">
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                     {tool.name}
                   </h3>
 
-                  <p className="mt-2 text-sm text-[#544E44] leading-relaxed">
+                  <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
                     {tool.tagline}
                   </p>
                 </div>
@@ -201,10 +205,10 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ onBack }) => {
       <div className="mt-12 text-center">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F0E8DA] hover:bg-[#E8DFC9] text-[#4A453E] border border-[#DDD2BE] text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--bg-surface-subtle)] hover:bg-[var(--bg-surface-hover)] text-[var(--text-secondary)] border border-[var(--border-subtle)] text-sm font-medium transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Profile</span>
+          <span>{t.back}</span>
         </button>
       </div>
 

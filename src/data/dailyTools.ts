@@ -46,6 +46,15 @@ export const DAILY_TOOLS_DATA: DailyTool[] = [
     isFavorite: true
   },
   {
+    name: "Sumatra PDF",
+    url: "https://www.sumatrapdfreader.org",
+    category: "documents-pdf",
+    tag: "Lightweight Document Reader",
+    description: "Lightning-fast, ultra-lightweight open-source reader for PDF, eBook (ePub, Mobi), XPS, DjVu, CHM, and comic book formats.",
+    whyItRocks: "Instant startup with zero background bloatware, minimal memory usage, and no intrusive ads.",
+    isFavorite: true
+  },
+  {
     name: "Squoosh.app",
     url: "https://squoosh.app",
     category: "graphics-design",
@@ -61,6 +70,15 @@ export const DAILY_TOOLS_DATA: DailyTool[] = [
     tag: "Media Saver",
     description: "Minimalist, ad-free, open-source downloader for video and audio from YouTube, Twitter/X, TikTok, Instagram, and Reddit.",
     whyItRocks: "No popups, no tracking cookies, no sketchy fake download buttons.",
+    isFavorite: true
+  },
+  {
+    name: "Bitwarden",
+    url: "https://bitwarden.com",
+    category: "privacy-security",
+    tag: "Open Source Password Manager",
+    description: "Industry-standard, open-source password manager with end-to-end zero-knowledge encryption across desktop, mobile, and web browsers.",
+    whyItRocks: "Generous free tier for personal and small business use, independently audited, and self-hostable via Vaultwarden.",
     isFavorite: true
   },
   {

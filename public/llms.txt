@@ -1,24 +1,48 @@
 # Albert Jonathan — Full-Stack Engineer & Assistant Lead
 
-> Personal portfolio, technical background, living in Malaysia field guides, and curated zero-adware web tools by Albert Jonathan.
+> Personal portfolio, technical background, living in Malaysia field guides, curated tools (minimal ads, free, and open source-prioritized for personal and small business use), and full-stack projects by Albert Jonathan.
 
 ## Overview
 
-Albert Jonathan is a Full-Stack Engineer & Assistant Lead based in Kuala Lumpur, Malaysia with 6+ years of production experience across React, TypeScript, PHP/Laravel, Next.js, Svelte, and Java Spring Boot. He specializes in enterprise frontend architecture, legacy modernization, and banking microservices at Accenture.
+Albert Jonathan is a Full-Stack Engineer & Assistant Lead based in Kuala Lumpur, Malaysia with 6+ years of production experience across React, TypeScript, PHP/Laravel, Next.js, Svelte, and Java Spring Boot. He specializes in enterprise frontend architecture, legacy modernization, and banking microservices at Accenture Malaysia for a major Singapore banking client. Outside software engineering, he is an active player focusing on Lacrosse Sixes for the Malaysia Lacrosse Federation and an internationally certified D1 Referee under the Asia Pacific Lacrosse Union (APLU).
 
 ## Key Links & Navigation
 
-- [Portfolio Home](https://albertjonathan.dev/): Overview of full-stack engineering background, banking project delivery at Accenture, and contact information.
-- [Curated Tools Directory](https://albertjonathan.dev/#/tools): Curated catalog of zero-adware web tools for daily media manipulation, video compression, format conversions, and developer utilities.
+- [Portfolio Home](https://albertjonathan.dev/): Full-stack engineering background, enterprise delivery, project case studies, and contact info.
+- [Curated Tools Directory](https://albertjonathan.dev/#tools): Free, minimal ads, and open source-prioritized web tools for daily media manipulation, video compression, file conversions, and developer utilities.
 - [Curriculum Vitae (PDF)](https://albertjonathan.dev/Albert_Jonathan_CV.pdf): Complete professional CV download.
+
+## Featured Projects
+
+- [Weather Analytics & Alert Platform](https://github.com/jo-bert/weather-analytics): Full-stack meteorological intelligence platform engineered with Laravel 11, Inertia.js 2.0, Vue 3 (Composition API, TypeScript), PostgreSQL, and Docker (Laravel Sail). Features interactive Leaflet weather maps, Chart.js meteorological trend visualizations, background queue jobs for weather data ingestion (OpenWeatherMap, WeatherAPI), API rate limiting, caching, and a configurable alert rule engine.
+- [Curated Web Tools Platform](https://albertjonathan.dev/#tools): Client-side, privacy-first web utility suite built with Preact and Tailwind CSS for compressing videos down to Discord/Slack file limits (8MB / 25MB), offline-capable document conversions, and developer formatting without third-party telemetry.
+
+## Academic & Career Background
+
+- **Accenture Technology Centre Malaysia**: Application Development Senior Analyst — Assistant Lead (Frontend) managing banking form engines and team onboarding for a Tier-1 Singapore banking client.
+- **Photobook Worldwide**: Web Developer scaling high-traffic consumer React & Laravel e-commerce systems.
+- **Independent & Contract**: Senior Frontend Consultant directing Vue to Svelte migrations (100 Lighthouse) and logistics tracking systems.
+- **Education & Credentials**: BSc (Hons) Computer Science (Data Analytics) from Staffordshire University, UK / APU Malaysia; Google Cloud Digital Leader certified.
+
+## Annual Engineering Ritual (Hackathons)
+
+- **The Great Malaysia AI Hackathon 2025 (Team LARP)**: Built a Google Chrome extension allowing job seekers to tailor their resumes in real-time based on opened LinkedIn job posts. Integrated AWS cloud infrastructure to parse/compile LaTeX & text inputs, orchestrating prompts through in-house LLMs.
+- **Superteam Malaysia Solana Hackathon 2024 (Yankee Swap)**: Architected a cross-chain DeFi yield protocol powered by Wormhole. Solved liquidity fragmentation by routing Solana user capital into major EVM protocols (Aave, Pendle, Uniswap) without leaving Solana.
+
+## Athletics & Officiating (Lacrosse Sixes)
+
+- **Malaysia Lacrosse Federation**: Active player focusing on Lacrosse Sixes.
+- **Asia Pacific Lacrosse Union (APLU)**: Sanctioned D1 Referee governing real-time match pace, rules compliance, and player safety.
 
 ## Field Notes & Malaysia Guides (Bahasa Indonesia)
 
-- [3 Jalur Kerja di Malaysia: Pekerjaan Kasar, BPO, dan Sesuai Keahlian](https://albertjonathan.dev/#/articles/3-jalur-kerja-di-malaysia): Panduan komprehensif 3 jalur kerja di Malaysia untuk orang Indonesia: persyaratan, benchmark gaji, regulasi cooling-off period visa ESD, dan platform cari kerja.
-- [Panduan Hidup di Malaysia: Transportasi, Mobil & SIM, Belanja, dan Komunitas](https://albertjonathan.dev/#/articles/panduan-hidup-transportasi-belanja-malaysia): Catatan praktis harian seputar transportasi kereta & bus MyRapid, tips kartu TnG NFC, biaya beli mobil, transfer SIM ke JPJ, marketplace barang bekas, dan grup komunitas ekspat.
+- [3 Jalur Kerja di Malaysia: Pekerjaan Kasar, BPO, dan Sesuai Keahlian](https://albertjonathan.dev/): Panduan komprehensif 3 jalur kerja di Malaysia untuk orang Indonesia: persyaratan tiap jalur, benchmark gaji, regulasi cooling-off period visa ESD, dan platform cari kerja.
+- [Panduan Hidup di Malaysia: Transportasi, Mobil & SIM, Belanja, dan Komunitas](https://albertjonathan.dev/): Catatan praktis harian seputar transportasi kereta & bus MyRapid, tips kartu TnG NFC, biaya beli mobil, transfer SIM ke JPJ, marketplace barang bekas, dan grup komunitas ekspat.
 
 ## Recommended Tools & Resources
 
+- [Bitwarden](https://bitwarden.com): Industry-standard, end-to-end encrypted open-source password manager for personal and small business security.
+- [Sumatra PDF](https://www.sumatrapdfreader.org): Lightning-fast, ultra-lightweight open-source reader for PDF, eBook, and comic book formats.
 - [8mb.video](https://8mb.video): In-browser two-pass video compression down to 8MB/25MB for Discord and Slack without watermarks.
 - [Videy](https://videy.co): Free, zero-signup instant video hosting for quick clips.
 - [VERT.sh](https://vert.sh/convert): Private in-browser open-source file converter without cloud server uploads.
@@ -34,5 +58,5 @@ Albert Jonathan is a Full-Stack Engineer & Assistant Lead based in Kuala Lumpur,
 
 ## Contact & Social Links
 
-- [GitHub Profile](https://github.com/jo-bert): Open source contributions, personal projects, and repositories.
+- [GitHub Profile](https://github.com/jo-bert): Open source contributions, personal repositories, and code experiments.
 - [LinkedIn Profile](https://linkedin.com/in/albertjonathan3): Professional networking and employment background.
