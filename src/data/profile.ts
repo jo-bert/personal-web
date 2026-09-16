@@ -52,6 +52,23 @@ export interface OfficiatingTournament {
   notes?: string;
 }
 
+export interface KlfsMatchItem {
+  id: string;
+  edition: "2026" | "2025";
+  day: 1 | 2 | 3;
+  type: "officiated" | "played";
+  division: "Men's Sixes" | "Women's Sixes";
+  divisionCode: "M" | "W";
+  teamA: string;
+  scoreA: number;
+  scoreB: number;
+  teamB: string;
+  stage: string;
+  playedTeam?: string;
+  result?: "win" | "loss" | "neutral";
+  note?: string;
+}
+
 export interface AthleticsData {
   team: string;
   role: string;
@@ -419,28 +436,296 @@ export const PROFILE_DATA: ProfileData = {
         tournament: "Kuala Lumpur Festival of Sixes (KLFS 2026)",
         year: "2026",
         edition: "KLFS 2026",
-        role: "APLU Sanctioned D1 Referee",
+        role: "APLU Sanctioned D1 Referee & Men's Sixes Player",
         matches: [
-          "Men's Sixes Championship Knockouts",
-          "Group Stage Pool Play Matches",
-          "Playoff Elimination Series",
+          "Officiated 5 Matches: M Crossefire LC vs Manila LC (14-13), W Sharks LC vs Ara Tapir LC (23-3), W Ditchers LC vs India (22-11), W India vs Ara Tapir LC (20-2), W Crossefire LC vs Sharks LC (4-17)",
+          "Competed for Griffins LC: 4 matches played, clinching 7th place victory (9-8 vs Malaya Tigers)",
+          "Neutral venue tournament format without home/away designation",
         ],
         notes:
-          "Officiating 30-second shot clock compliance, rapid restart transitions, and technical foul enforcement under World Lacrosse Sixes specifications.",
+          "Dual participation across 3 tournament days: Governed World Lacrosse Sixes rules and field transitions while competing on the pitch.",
       },
       {
         tournament: "Kuala Lumpur Festival of Sixes (KLFS 2025)",
         year: "2025",
         edition: "KLFS 2025",
-        role: "APLU Sanctioned D1 Referee",
+        role: "APLU Sanctioned D1 Referee & Player (Selangor White Eagles)",
         matches: [
-          "Men's Sixes Division Playoffs",
-          "Pool Play Round-Robin Matches",
-          "Bronze Medal Consolation Match",
+          "Officiated 5 Matches: M SWE vs Malaya Tigers (10-7), M Fogo Japan vs White Eagles (28-4), M Malaya Tigers vs Sharks (9-20), W SG Crossefire vs HK Valley (6-6), W Ara Tapir vs Valley & Sharks (4-13)",
+          "Competed for Selangor White Eagles: 4 matches played across pool play and placement playoffs",
+          "Dual role on the pitch representing Selangor White Eagles and officiating international fixtures",
         ],
         notes:
-          "Officiated inaugural regional Sixes matches, managing game tempo, bench decorum, and goal verification.",
+          "Dual participation on the pitch: Officiated high-pace Sixes pool & playoff matches while competing as an active player representing Selangor White Eagles.",
       },
     ],
   },
 };
+
+export const KLFS_2026_MATCHES: KlfsMatchItem[] = [
+  // Day 1: Officiated
+  {
+    id: "klfs26-off-1",
+    edition: "2026",
+    day: 1,
+    type: "officiated",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Crossefire LC",
+    scoreA: 14,
+    scoreB: 13,
+    teamB: "Manila LC",
+    stage: "Pool Play",
+  },
+  {
+    id: "klfs26-off-2",
+    edition: "2026",
+    day: 1,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "Sharks LC",
+    scoreA: 23,
+    scoreB: 3,
+    teamB: "Ara Tapir LC",
+    stage: "Pool Play",
+  },
+  {
+    id: "klfs26-off-3",
+    edition: "2026",
+    day: 1,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "Ditchers LC",
+    scoreA: 22,
+    scoreB: 11,
+    teamB: "India",
+    stage: "Pool Play",
+  },
+  // Day 1: Played (Griffins LC)
+  {
+    id: "klfs26-ply-1",
+    edition: "2026",
+    day: 1,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Griffins LC",
+    scoreA: 6,
+    scoreB: 24,
+    teamB: "Bangkok LC",
+    stage: "Pool Play",
+    playedTeam: "Griffins LC",
+    result: "loss",
+  },
+  {
+    id: "klfs26-ply-2",
+    edition: "2026",
+    day: 1,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Manila LC",
+    scoreA: 10,
+    scoreB: 3,
+    teamB: "Griffins LC",
+    stage: "Pool Play",
+    playedTeam: "Griffins LC",
+    result: "loss",
+  },
+  // Day 2: Officiated
+  {
+    id: "klfs26-off-4",
+    edition: "2026",
+    day: 2,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "India",
+    scoreA: 20,
+    scoreB: 2,
+    teamB: "Ara Tapir LC",
+    stage: "Pool Play",
+  },
+  {
+    id: "klfs26-off-5",
+    edition: "2026",
+    day: 2,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "Crossefire LC",
+    scoreA: 4,
+    scoreB: 17,
+    teamB: "Sharks LC",
+    stage: "Pool Play",
+  },
+  // Day 2: Played (Griffins LC - Cross-Bracket)
+  {
+    id: "klfs26-ply-3",
+    edition: "2026",
+    day: 2,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "India M",
+    scoreA: 20,
+    scoreB: 8,
+    teamB: "Griffins LC",
+    stage: "Cross-Bracket",
+    playedTeam: "Griffins LC",
+    result: "loss",
+  },
+  // Day 3: Played (Griffins LC)
+  {
+    id: "klfs26-ply-4",
+    edition: "2026",
+    day: 3,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Malaya Tigers",
+    scoreA: 8,
+    scoreB: 9,
+    teamB: "Griffins LC",
+    stage: "7th Placement Match",
+    playedTeam: "Griffins LC",
+    result: "win",
+  },
+];
+
+export const KLFS_2025_MATCHES: KlfsMatchItem[] = [
+  // Day 1: Officiated (Pool Play)
+  {
+    id: "klfs25-off-1",
+    edition: "2025",
+    day: 1,
+    type: "officiated",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Selangor White Eagles",
+    scoreA: 10,
+    scoreB: 7,
+    teamB: "Malaya Tigers",
+    stage: "Pool Play",
+  },
+  // Day 1: Played (Selangor White Eagles - Pool Play)
+  {
+    id: "klfs25-ply-1",
+    edition: "2025",
+    day: 1,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Sharks",
+    scoreA: 19,
+    scoreB: 4,
+    teamB: "Selangor White Eagles",
+    stage: "Pool Play",
+    playedTeam: "Selangor White Eagles",
+    result: "loss",
+  },
+  // Day 2: Officiated (Pool Play)
+  {
+    id: "klfs25-off-2",
+    edition: "2025",
+    day: 2,
+    type: "officiated",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Fogo Japan",
+    scoreA: 28,
+    scoreB: 4,
+    teamB: "White Eagles",
+    stage: "Pool Play",
+  },
+  {
+    id: "klfs25-off-3",
+    edition: "2025",
+    day: 2,
+    type: "officiated",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Malaya Tigers",
+    scoreA: 9,
+    scoreB: 20,
+    teamB: "Sharks",
+    stage: "Pool Play",
+  },
+  // Day 2: Played (Selangor White Eagles - Pool Play)
+  {
+    id: "klfs25-ply-2",
+    edition: "2025",
+    day: 2,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Seoul Night",
+    scoreA: 23,
+    scoreB: 4,
+    teamB: "Selangor White Eagles",
+    stage: "Pool Play",
+    playedTeam: "Selangor White Eagles",
+    result: "loss",
+  },
+  // Day 3: Officiated (Placement Playoff)
+  {
+    id: "klfs25-off-4",
+    edition: "2025",
+    day: 3,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "Singapore Crossefire",
+    scoreA: 6,
+    scoreB: 6,
+    teamB: "HK Valley Women LC",
+    stage: "Placement Playoff",
+  },
+  // Day 3: Played (Selangor White Eagles - Placement Playoffs)
+  {
+    id: "klfs25-ply-3",
+    edition: "2025",
+    day: 3,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Selangor White Eagles",
+    scoreA: 7,
+    scoreB: 13,
+    teamB: "Crossefire LC",
+    stage: "Placement Playoff",
+    playedTeam: "Selangor White Eagles",
+    result: "loss",
+  },
+  {
+    id: "klfs25-ply-4",
+    edition: "2025",
+    day: 3,
+    type: "played",
+    division: "Men's Sixes",
+    divisionCode: "M",
+    teamA: "Selangor White Eagles",
+    scoreA: 7,
+    scoreB: 17,
+    teamB: "Bangkok LC",
+    stage: "Placement Playoff",
+    playedTeam: "Selangor White Eagles",
+    result: "loss",
+  },
+  // Day 3: Officiated (Placement Playoff)
+  {
+    id: "klfs25-off-5",
+    edition: "2025",
+    day: 3,
+    type: "officiated",
+    division: "Women's Sixes",
+    divisionCode: "W",
+    teamA: "Ara Tapir",
+    scoreA: 4,
+    scoreB: 13,
+    teamB: "Valley & Sharks LC",
+    stage: "Placement Playoff",
+  },
+];

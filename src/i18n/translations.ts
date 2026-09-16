@@ -41,7 +41,7 @@ export const TRANSLATIONS = {
       title: "Full-Stack Engineer & Assistant Lead",
       location: "Kuala Lumpur, Malaysia",
       bio1: "I specialize in architecting resilient frontend and full-stack systems in regulated banking and high-traffic e-commerce. Currently serving as assistant lead (acting frontend lead) for a Singapore banking client in Accenture, building digital forms for loans and account opening while managing the onboarding of new engineers onto existing projects.",
-      bio2: "With 6+ years of production experience across React, TypeScript, PHP / Laravel, Next.js, Svelte, and Java Spring Boot, I focus on legacy modernization—cutting build times by 75%, pruning dead code, and maintaining zero-downtime releases. Outside of software engineering, I play competitive lacrosse sixes for the Malaysia Lacrosse Federation and officiate as a sanctioned D1 referee under the Asia Pacific Lacrosse Union (APLU).",
+      bio2: "With 6+ years of production experience across React, TypeScript, PHP / Laravel, Next.js, Svelte, and Java Spring Boot, I focus on legacy modernization—cutting build times by 75%, upgrading vulnerable libraries, pruning dead code, and maintaining zero-downtime releases. Outside of software engineering, I play competitive lacrosse sixes for the Malaysia Lacrosse Federation and officiate as a sanctioned D1 referee under the Asia Pacific Lacrosse Union (APLU).",
       downloadPdf: "Download CV (PDF)",
       showEmail: "Show Email Address",
       copied: "(Copied!)",
@@ -81,6 +81,21 @@ export const TRANSLATIONS = {
       logToggle: "Officiating Ledger & Tournament Log (KLFS 2025 & 2026)",
       logSubtitle:
         "Personal memory archive of tournaments, stages, and matches officiated.",
+      viewScorecard: "Open Match Center",
+      scorecardButton: "Open Tournament Scorecards (KLFS 2025 & 2026)",
+      scorecardModalTitle: "KLFS Tournament Match Center",
+      scorecardModalSubtitle:
+        "Kuala Lumpur Festival of Sixes • Neutral Venue Fixtures",
+      scorecardEdition2026: "KLFS 2026 (9 Matches)",
+      scorecardEdition2025: "KLFS 2025 (9 Matches)",
+      scorecardAllTab: "All Matches",
+      scorecardOfficiatedTab: "Officiated (D1)",
+      scorecardPlayedTab: "Played",
+      scorecardDay: "Day",
+      scorecardOffRotation: "Off Rotation / Rest Day",
+      scorecardOffRotationDesc:
+        "No referee assignments on Day 3 (competed in placement playoff matches as player).",
+      scorecardYourTeam: "Your Team",
     },
     experience: {
       tag: "Experience & Delivery",
@@ -169,6 +184,21 @@ export const TRANSLATIONS = {
       logToggle: "Arsip Perwasitan Turnamen (KLFS 2025 & 2026)",
       logSubtitle:
         "Catatan memori pertandingan, babak gugur, dan turnamen yang dipimpin.",
+      viewScorecard: "Buka Pusat Pertandingan",
+      scorecardButton: "Buka Scorecard Turnamen (KLFS 2025 & 2026)",
+      scorecardModalTitle: "Pusat Pertandingan Turnamen KLFS",
+      scorecardModalSubtitle:
+        "Kuala Lumpur Festival of Sixes • Jadwal & Skor Tanpa Tuan Rumah",
+      scorecardEdition2026: "KLFS 2026 (9 Pertandingan)",
+      scorecardEdition2025: "KLFS 2025 (9 Pertandingan)",
+      scorecardAllTab: "Semua Pertandingan",
+      scorecardOfficiatedTab: "Dipimpin (Wasit D1)",
+      scorecardPlayedTab: "Dimainkan",
+      scorecardDay: "Hari",
+      scorecardOffRotation: "Rotasi Istirahat / Bebas Tugas",
+      scorecardOffRotationDesc:
+        "Tidak ada tugas wasit pada Hari ke-3 (bertanding di babak playoff penentuan).",
+      scorecardYourTeam: "Tim Anda",
     },
     experience: {
       tag: "Pengalaman & Rekam Jejak",
