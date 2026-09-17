@@ -21,6 +21,14 @@ export interface CertificationItem {
   issuer: string;
 }
 
+export interface ProjectScreenshotItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  src: string;
+  alt: string;
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -31,6 +39,7 @@ export interface ProjectItem {
   repoUrl?: string;
   demoUrl?: string;
   highlights: string[];
+  screenshots?: ProjectScreenshotItem[];
 }
 
 export interface HackathonItem {
@@ -69,6 +78,13 @@ export interface KlfsMatchItem {
   note?: string;
 }
 
+export interface LacrossePhotoItem {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+}
+
 export interface AthleticsData {
   team: string;
   role: string;
@@ -77,7 +93,13 @@ export interface AthleticsData {
   description: string;
   stats: { label: string; value: string }[];
   highlights: string[];
+  photos?: LacrossePhotoItem[];
   officiatingLog?: OfficiatingTournament[];
+}
+
+export interface SkillCategory {
+  title: string;
+  skills: string[];
 }
 
 export interface ProfileData {
@@ -161,7 +183,7 @@ export const PROFILE_DATA: ProfileData = {
         "Nuxt",
         "SvelteKit",
         "Tailwind CSS",
-        "MUI",
+        "React Hook Form",
         "SCSS",
         "Vite",
         "Webpack",
@@ -171,13 +193,15 @@ export const PROFILE_DATA: ProfileData = {
       title: "Backend & Microservices",
       skills: [
         "Java 11 / Spring Boot",
+        "Spring Security",
+        "Spring Integration",
+        "Hibernate / JPA",
+        "Maven & Gradle",
         "Node.js",
         "Express",
         "PHP 8 / Laravel",
         "REST APIs",
         "GraphQL",
-        "Spring Security",
-        "Hibernate / JPA",
       ],
     },
     {
@@ -188,24 +212,26 @@ export const PROFILE_DATA: ProfileData = {
         "JUnit 5",
         "SonarQube",
         "Veracode Compliance",
+        "Defect Triage & RCA",
         "Oxlint (Anti-Slop)",
         "AST Linting",
       ],
     },
     {
-      title: "DevOps, Cloud & Data",
+      title: "DevOps, Cloud & Infrastructure",
       skills: [
         "Docker",
         "Kubernetes",
         "AWS",
         "Cloudflare Pages",
         "Jenkins CI/CD",
+        "Apache HTTP Server",
+        "JBoss",
         "Kibana",
         "Nginx",
+        "Oracle DB",
         "PostgreSQL",
         "MySQL",
-        "Oracle DB",
-        "MongoDB",
       ],
     },
   ],
@@ -216,30 +242,50 @@ export const PROFILE_DATA: ProfileData = {
       period: "Dec 2022 – Present",
       location: "Kuala Lumpur, Malaysia",
       tagline:
-        "Assistant lead on a major Singapore banking client in Accenture managing loan and account opening forms and personnel onboarding across existing projects.",
+        "Assistant lead and individual contributor for a Tier-1 Singapore banking client, delivering digital loan/onboarding flows, defect remediation, SIT stability, and legacy modernization.",
       highlights: [
-        "Architectural Governance: Defined architecture standards separating UI components, business logic, and API adapters—enabling safe incremental modernization without stopping active sprint delivery.",
-        "System De-risking: Proposed an alternative system architecture for a marketing analytics platform to VP & Solution Architects; adopted and deployed successfully.",
-        "Delivery Stabilization: Rescued a critical banking stream experiencing team attrition by onboarding squad lead, senior PM, and 10 engineers with structured knowledge transfer.",
-        "Team Leadership: Mentored 6 frontend developers; reviewed 15+ complex PRs monthly focusing on scalability, strict typing, and testability.",
-        "Legacy React Overhaul: Upgraded legacy React app serving 30K+ users: removed duplicate logic and established unit-testing, yielding 75% faster builds and ~50% code reduction.",
-        "Microservices & Compliance: Delivered 3 Spring Boot microservices with 30+ JUnit tests, achieving 0 major vulnerabilities under Veracode banking standards.",
-        "Zero-Downtime Releases: Governed 3 production banking releases and coordinated zero-downtime rollouts across 6 banking applications.",
-        "Won 2023 Innovation Champion for driving process improvements through engineering innovation.",
+        "Individual Contributor Defect Fixing: Proactively investigated and resolved complex frontend and backend defects across client journeys (including responsive CSS animation bugs), and reviewed 15+ pull requests monthly to enforce strict typing and prevent defects before SIT.",
+        "Security & Code Quality Remediation: Remediated security vulnerabilities across 3 Spring Boot microservices targeting 0 code smells and 0 major vulnerabilities under Veracode banking compliance; refactored code smells, duplicate code, and bugs flagged by SonarQube.",
+        "SIT Reliability & First Responder: Maintained SIT environments running Apache HTTP Server, JBoss, and Jenkins; acted as first responder diagnosing application and server logs, resolving integration issues, and executing recovery procedures to prevent downtime.",
+        "Legacy React Modernization: Overhauled a legacy React application serving 30K+ users: refactored state management with Redux, modernized build tooling with Vite and Webpack across 5 repositories, and implemented automated unit testing—achieving 75% faster builds and ~50% code reduction.",
+        "Extensible UI Components: Built 10+ reusable UI components with dynamic labelling and strict schema validation using React, Tailwind CSS, React Hook Form, and Redux across 8+ pages, ensuring UI consistency, design token parity, and lowering defect recurrence.",
+        "Backend Microservices & Data Layer: Designed 3 REST endpoints using Spring Integration and Spring Boot with Spring Security (Bearer token and Session authorization); built and maintained Hibernate data access layers against Oracle DB to track customer application lifecycles.",
+        "Build Tooling & Migration: Streamlined frontend bundling and HMR using Vite and maintained Webpack configurations across 5 repositories; migrated 3 Spring Boot microservices from Java 8 to Java 11 and transitioned build lifecycles from Maven to Gradle, delivering 30% faster build times.",
+        "Automated Test Coverage: Authored 80+ Jest and React Testing Library tests, driving coverage to ~90% and reducing technical debt by 40%; created 30+ JUnit tests for backend services.",
+        "Enterprise CMS & Analytics: Integrated TeamSite CMS with Spring Boot microservices to allow product owners to self-manage localization, terms, and legal appendices; implemented Adobe Experience Manager (AEM) behavioral analytics tracking across 3 websites.",
+        "Technical Leadership & Architecture: Defined frontend architectural boundaries separating UI components, business logic, and API layers; proposed alternative marketing analytics architecture adopted by VP & Solution Architects; stabilized delivery during team attrition by onboarding squad lead, PM, and 10 engineers.",
+        "Zero-Downtime Releases: Governed 3 production banking releases and coordinated zero-downtime rollouts across 6 banking applications with L3 support and PMO.",
+        "Recognition: Won 2023 Innovation Champion for driving banking process improvements through technical innovation.",
       ],
       technologies: [
         "React",
         "TypeScript",
-        "Java 11",
-        "Spring Boot",
         "Redux",
         "Tailwind CSS",
+        "Vite",
+        "Webpack",
+        "React Hook Form",
+        "Java 11",
+        "Spring Boot",
+        "Spring Security",
+        "Spring Integration",
         "Jest",
-        "RTL",
-        "Jenkins",
-        "Oracle DB",
+        "React Testing Library",
+        "JUnit",
+        "SonarQube",
         "Veracode",
+        "Hibernate",
+        "Oracle DB",
+        "Apache HTTP Server",
+        "JBoss",
+        "Jenkins",
+        "Maven",
+        "Gradle",
         "TeamSite",
+        "AEM",
+        "JIRA",
+        "Confluence",
+        "Bitbucket",
       ],
     },
     {
@@ -250,20 +296,27 @@ export const PROFILE_DATA: ProfileData = {
       tagline:
         "High-traffic global consumer e-commerce platform processing millions in personalized print orders.",
       highlights: [
-        "Consumer App Scalability: Maintained and optimized high-traffic React consumer application with MUI and SCSS across payment funnels, SEO metadata, and product previews.",
-        "Production Incident Response: Diagnosed and deployed hotfixes for high-severity production incidents using Kibana log forensics across PHP/Laravel and SQL databases.",
-        "Containerization & Cloud: Containerized Laravel back-office and React frontend with Docker for consistent developer environments and automated AWS cloud deployments.",
+        "Consumer App Engineering: Maintained and extended the core consumer-facing e-commerce web application using React and SCSS, delivering improvements across SEO metadata, payment checkout funnels, auto-apply discount vouchers, and product previews.",
+        "L3 Incident Triage: Investigated and resolved critical production frontend incidents using Kibana log forensics during bi-monthly L3 on-call support rotations.",
+        "Dynamic Data Views & Scalability: Engineered 20+ responsive data tables and bulk calculation views in React consuming REST and GraphQL APIs, serving over 4 million global customers.",
+        "Third-Party SDK Integration: Integrated external image editor SDKs into the React application, enabling users to customize photos in-browser and route print-ready assets directly to production factories.",
+        "Containerization & Cloud: Containerized the React frontend with Docker for consistent local developer setups and automated AWS cloud deployments.",
+        "Automated Testing & Mentorship: Authored 20+ unit and snapshot tests using Jest and Enzyme to guarantee UI stability across critical purchase flows; mentored 4 frontend developers on React architecture, best practices, and ESLint code standards.",
+        "Analytics & Attribution: Owned tracking implementations in Google Tag Manager for user event analytics and marketing journey attribution.",
       ],
       technologies: [
         "React",
-        "PHP / Laravel",
-        "MySQL",
+        "JavaScript",
+        "SCSS",
+        "REST / GraphQL",
         "Docker",
         "AWS",
         "Kibana",
-        "MUI",
-        "REST / GraphQL",
-        "SCSS",
+        "Jest",
+        "Enzyme",
+        "Google Tag Manager",
+        "Git",
+        "Bitbucket",
       ],
     },
     {
@@ -331,10 +384,41 @@ export const PROFILE_DATA: ProfileData = {
         "TypeScript",
       ],
       status: "Dockerized • Full Stack",
+      repoUrl: "https://github.com/jo-bert/weather-analytics",
+      screenshots: [
+        {
+          id: "dashboard",
+          title: "Interactive Weather Dashboard",
+          subtitle: "Leaflet geospatial map, 7-day forecast cards & dynamic Chart.js metrics",
+          src: "/images/weather/dashboard.webp",
+          alt: "Weather forecast dashboard showing city search, Leaflet weather map of Jakarta, forecast list, and Chart.js current temperature curve",
+        },
+        {
+          id: "alerts",
+          title: "Alert Rule Engine & Creator",
+          subtitle: "Configurable threshold triggers with automated queue-based event dispatching",
+          src: "/images/weather/alerts.webp",
+          alt: "Weather alert creator interface with threshold value, parameter, condition, location, and ongoing alerts management",
+        },
+        {
+          id: "forecast-modal",
+          title: "Hourly Meteorological Analytics",
+          subtitle: "Comprehensive hourly curves, precipitation probability, UV index, and wind data",
+          src: "/images/weather/forecast-modal.webp",
+          alt: "Today's forecast modal with detailed temperature/precipitation curve and metrics",
+        },
+        {
+          id: "mobile",
+          title: "Mobile-Responsive Viewport",
+          subtitle: "Adaptive responsive layout tailored for on-the-go monitoring",
+          src: "/images/weather/mobile.webp",
+          alt: "Mobile view of the weather application",
+        },
+      ],
       highlights: [
         "Interactive geospatial weather maps via Leaflet and dynamic condition visualizations with Chart.js.",
         "Automated background queue jobs for data aggregation (OpenWeatherMap, WeatherAPI), API rate limiting, and configurable alert rules.",
-        "PostgreSQL time-series schema with custom calculation functions and geospatial queries, containerized via Laravel Sail.",
+        "PostgreSQL schema with custom calculation functions and geospatial queries, containerized via Laravel Sail.",
       ],
     },
     {
@@ -342,7 +426,7 @@ export const PROFILE_DATA: ProfileData = {
       title: "Curated Web Tools & Open-Source Utilities",
       subtitle: "Minimal Ads, Free & Open Source-Prioritized Utilities",
       description:
-        "A handpicked web utility suite for small business and personal use: compressing videos down to Discord/Slack file limits (8MB / 25MB), offline-capable document conversions, and fast developer utilities without intrusive ads or paywalls.",
+        "A handpicked web utility suite for small business and personal use",
       technologies: [
         "Preact",
         "TypeScript",
@@ -353,7 +437,7 @@ export const PROFILE_DATA: ProfileData = {
       status: "Live on this site",
       demoUrl: "#tools",
       highlights: [
-        "Client-side processing: Zero uploads to external servers, protecting user privacy and confidential documents.",
+        "Free and Open Source-prioritized utilities for small businesses and individuals, with minimal ads and no paywalls.",
         "Engineered with Preact and modern tree-shaking for sub-second page loads and zero tracker footprint.",
         "Integrated into this personal platform as a free community utility for small businesses and individuals.",
       ],
@@ -378,7 +462,13 @@ export const PROFILE_DATA: ProfileData = {
       description:
         "Architected a Solana-first cross-chain automated yield protocol powered by Wormhole messaging. Solved DeFi liquidity fragmentation by allowing Solana users to route capital into top EVM protocols (Aave, Pendle, Uniswap) without leaving Solana or hopping between chain ecosystems.",
       award: "Solana Hackathon Entry",
-      technologies: ["Solana", "Wormhole", "Cross-Chain DeFi", "React", "TypeScript"],
+      technologies: [
+        "Solana",
+        "Wormhole",
+        "Cross-Chain DeFi",
+        "React",
+        "TypeScript",
+      ],
     },
   ],
   education: [
@@ -431,9 +521,53 @@ export const PROFILE_DATA: ProfileData = {
       "Sanctioned D1 Referee by the Asia Pacific Lacrosse Union (APLU), governing rules, field safety, and rapid real-time officiating on the pitch.",
       "Applies athletic discipline, split-second conflict management, and high-pressure leadership directly from the field into engineering squad leadership.",
     ],
+    photos: [
+      {
+        id: "photo-ref-crew",
+        src: "/images/lacrosse/klfs-2026-referee-crew.webp",
+        alt: "Albert Jonathan and APLU referee crew consulting on field at KLFS 2026",
+        title: "Referee Crew Consultation",
+      },
+      {
+        id: "photo-celebration",
+        src: "/images/lacrosse/klfs-2026-celebration.webp",
+        alt: "Albert Jonathan #35 celebrating Men's Sixes victory with Griffins LC teammates",
+        title: "Post-Match Celebration",
+      },
+      {
+        id: "photo-defense",
+        src: "/images/lacrosse/klfs-2026-defense-action.webp",
+        alt: "Albert Jonathan in red (#35) playing tight 1v1 defense against Manila LC #38",
+        title: "1v1 Match Defense vs Manila",
+      },
+      {
+        id: "photo-ref-call",
+        src: "/images/lacrosse/klfs-2026-referee-call.webp",
+        alt: "Albert Jonathan officiating in stripes with whistle raised during international match",
+        title: "Directing Match Flow & Whistle",
+      },
+      {
+        id: "photo-ref-play",
+        src: "/images/lacrosse/klfs-2026-referee-play.webp",
+        alt: "Albert Jonathan closely tracking the ball during women's Sixes match action",
+        title: "In-Play Positioning & Safety",
+      },
+      {
+        id: "photo-team-griffins",
+        src: "/images/lacrosse/klfs-2026-team-griffins.webp",
+        alt: "Griffins Lacrosse Club full squad team photo at KLFS 2026",
+        title: "Griffins Lacrosse Club Lineup",
+      },
+      {
+        id: "photo-match-crease",
+        src: "/images/lacrosse/klfs-2026-match-crease.webp",
+        alt: "High-tempo Sixes match action around the goal crease at KLFS 2026",
+        title: "Goal Crease Battle",
+      },
+    ],
     officiatingLog: [
       {
-        tournament: "Kuala Lumpur Festival of Sixes (KLFS 2026)",
+        tournament: "Kuala Lumpur Friendly Series (KLFS 2026)",
         year: "2026",
         edition: "KLFS 2026",
         role: "APLU Sanctioned D1 Referee & Men's Sixes Player",
@@ -446,14 +580,14 @@ export const PROFILE_DATA: ProfileData = {
           "Dual participation across 3 tournament days: Governed World Lacrosse Sixes rules and field transitions while competing on the pitch.",
       },
       {
-        tournament: "Kuala Lumpur Festival of Sixes (KLFS 2025)",
+        tournament: "Kuala Lumpur Friendly Series (KLFS 2025)",
         year: "2025",
         edition: "KLFS 2025",
-        role: "APLU Sanctioned D1 Referee & Player (Selangor White Eagles)",
+        role: "APLU Sanctioned D1 Referee & Men's Sixes Player",
         matches: [
           "Officiated 5 Matches: M SWE vs Malaya Tigers (10-7), M Fogo Japan vs White Eagles (28-4), M Malaya Tigers vs Sharks (9-20), W SG Crossefire vs HK Valley (6-6), W Ara Tapir vs Valley & Sharks (4-13)",
           "Competed for Selangor White Eagles: 4 matches played across pool play and placement playoffs",
-          "Dual role on the pitch representing Selangor White Eagles and officiating international fixtures",
+          "Neutral venue tournament format without home/away designation",
         ],
         notes:
           "Dual participation on the pitch: Officiated high-pace Sixes pool & playoff matches while competing as an active player representing Selangor White Eagles.",

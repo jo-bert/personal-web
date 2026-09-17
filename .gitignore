@@ -58,3 +58,6 @@ localhost_*.json
 *.tsbuildinfo
 .eslintcache
 .stylelintcache
+
+# Local raw media backup
+photos_backup/

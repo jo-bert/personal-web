@@ -49,7 +49,7 @@ export const TRANSLATIONS = {
     toolsBanner: {
       tag: "Curated Resources & Utilities",
       title: "Web Tools & Open-Source Utilities",
-      desc: "A handpicked collection of free, minimal-ads, and open source-prioritized tools for small business and personal use: video compression down to 8MB/25MB for Discord/Slack, format conversions, in-browser graphics, and private PDF tools.",
+      desc: "A handpicked collection of free, minimal-ads, and open source-prioritized tools for small business and personal use.",
       button: "Explore Tools Directory",
     },
     projects: {
@@ -59,6 +59,9 @@ export const TRANSLATIONS = {
       liveBadge: "Live On Site",
       openApp: "Open Utility",
       viewCode: "View Architecture",
+      previewScreenshots: "Screenshots",
+      viewRepo: "GitHub Repo",
+      screensModalTitle: "Application Screenshots",
     },
     hackathons: {
       tag: "Annual Engineering Ritual",
@@ -73,7 +76,7 @@ export const TRANSLATIONS = {
       tag: "Athletics & Officiating",
       title: "Off the Pitch: Lacrosse Sixes & D1 Officiating",
       subtitle:
-        "Balancing high-stakes technical leadership with fast-paced competitive athletics and international-grade rules enforcement.",
+        "Balancing technical expertise with competitive athletics and rules enforcement.",
       teamLabel: "National Team / Club",
       federationLabel: "Sanctioning Body",
       roleLabel: "Role on Field",
@@ -85,7 +88,7 @@ export const TRANSLATIONS = {
       scorecardButton: "Open Tournament Scorecards (KLFS 2025 & 2026)",
       scorecardModalTitle: "KLFS Tournament Match Center",
       scorecardModalSubtitle:
-        "Kuala Lumpur Festival of Sixes • Neutral Venue Fixtures",
+        "Kuala Lumpur Friendly Series • Neutral Venue Fixtures",
       scorecardEdition2026: "KLFS 2026 (9 Matches)",
       scorecardEdition2025: "KLFS 2025 (9 Matches)",
       scorecardAllTab: "All Matches",
@@ -96,6 +99,15 @@ export const TRANSLATIONS = {
       scorecardOffRotationDesc:
         "No referee assignments on Day 3 (competed in placement playoff matches as player).",
       scorecardYourTeam: "Your Team",
+      galleryTitle: "Tournament Moments • KLFS 2026",
+      galleryPrev: "Previous photos",
+      galleryNext: "Next photos",
+      galleryClose: "Close preview",
+      galleryCounterOf: "of",
+      galleryCategoryAll: "All Moments",
+      galleryCategoryOfficiating: "Officiating",
+      galleryCategoryCompetition: "Competition",
+      galleryCategoryTeam: "Team",
     },
     experience: {
       tag: "Experience & Delivery",
@@ -119,12 +131,13 @@ export const TRANSLATIONS = {
       back: "Back to Profile",
       tag: "Curated Catalog",
       title: "Useful Tools & Recommended Utilities",
-      desc: "A handpicked collection of minimal-ads, free, and open source-prioritized tools for small businesses and personal use: everyday file conversions, password management, video compression, and document utilities.",
+      desc: "A handpicked collection of 100% free and open-source tools for everyday file conversions, document viewing, lightweight messaging, password management, and developer workflows.",
       searchPlaceholder: "Search tools, utilities, or commands...",
       dailyTab: "Daily Web Tools",
+      desktopTab: "Desktop App",
       devTab: "Developer Stack",
       noResults: "No tools found matching your search.",
-      verifiedBadge: "Minimal ads, free and open source-prioritized",
+      verifiedBadge: "100% Free & Open Source",
       visitSite: "Visit Website",
     },
     footer: {
@@ -162,6 +175,9 @@ export const TRANSLATIONS = {
       liveBadge: "Aktif di Web",
       openApp: "Buka Utilitas",
       viewCode: "Lihat Arsitektur",
+      previewScreenshots: "Tangkapan Layar",
+      viewRepo: "Repo GitHub",
+      screensModalTitle: "Tangkapan Layar Aplikasi",
     },
     hackathons: {
       tag: "Ritual Rekayasa Tahunan",
@@ -187,8 +203,7 @@ export const TRANSLATIONS = {
       viewScorecard: "Buka Pusat Pertandingan",
       scorecardButton: "Buka Scorecard Turnamen (KLFS 2025 & 2026)",
       scorecardModalTitle: "Pusat Pertandingan Turnamen KLFS",
-      scorecardModalSubtitle:
-        "Kuala Lumpur Festival of Sixes • Jadwal & Skor Tanpa Tuan Rumah",
+      scorecardModalSubtitle: "Kuala Lumpur Friendly Series",
       scorecardEdition2026: "KLFS 2026 (9 Pertandingan)",
       scorecardEdition2025: "KLFS 2025 (9 Pertandingan)",
       scorecardAllTab: "Semua Pertandingan",
@@ -199,6 +214,17 @@ export const TRANSLATIONS = {
       scorecardOffRotationDesc:
         "Tidak ada tugas wasit pada Hari ke-3 (bertanding di babak playoff penentuan).",
       scorecardYourTeam: "Tim Anda",
+      galleryTitle: "Momen Turnamen • KLFS 2026",
+      gallerySubtitle:
+        "Dokumentasi peran ganda: memimpin pertandingan internasional dan bertanding di Men's Sixes.",
+      galleryPrev: "Foto sebelumnya",
+      galleryNext: "Foto berikutnya",
+      galleryClose: "Tutup pratinjau",
+      galleryCounterOf: "dari",
+      galleryCategoryAll: "Semua Momen",
+      galleryCategoryOfficiating: "Perwasitan",
+      galleryCategoryCompetition: "Pertandingan",
+      galleryCategoryTeam: "Tim",
     },
     experience: {
       tag: "Pengalaman & Rekam Jejak",
@@ -222,12 +248,13 @@ export const TRANSLATIONS = {
       back: "Kembali ke Profil",
       tag: "Katalog Kurasi",
       title: "Alat Praktis & Utilitas Rekomendasi",
-      desc: "Koleksi pilihan alat web minim iklan, gratis, dan ramah open-source untuk bisnis kecil maupun kebutuhan pribadi: konversi file harian, manajemen password, kompresi video, dan dokumen.",
+      desc: "Koleksi pilihan alat web gratis dan 100% open-source untuk konversi file harian, pembaca dokumen, perpesanan ringan, manajemen kata sandi, dan alur kerja developer.",
       searchPlaceholder: "Cari alat, utilitas, atau perintah...",
       dailyTab: "Alat Web Harian",
+      desktopTab: "Aplikasi Desktop",
       devTab: "Stack Developer",
       noResults: "Tidak ada alat yang cocok dengan pencarian Anda.",
-      verifiedBadge: "Iklan minimal, gratis, prioritas open source",
+      verifiedBadge: "100% Gratis & Open Source",
       visitSite: "Buka Situs",
     },
     footer: {

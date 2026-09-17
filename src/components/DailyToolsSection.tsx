@@ -75,7 +75,7 @@ export const DailyToolsSection: React.FC = () => {
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search tools (e.g. 8mb, PDF, Photoshop, convert)..."
+              placeholder="Search tools (e.g. Stirling, PDF, convert)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.currentTarget.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
@@ -110,7 +110,7 @@ export const DailyToolsSection: React.FC = () => {
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.length === 0 ? (
             <div className="col-span-full py-12 text-center text-slate-400 bg-slate-900/40 rounded-2xl border border-slate-800">
-              No tools matching "{searchQuery}". Try searching for "PDF", "8mb", or "compress".
+              No tools matching "{searchQuery}". Try searching for "PDF", "Stirling", or "convert".
             </div>
           ) : (
             filteredTools.map((tool, idx) => (

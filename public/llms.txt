@@ -1,6 +1,6 @@
 # Albert Jonathan — Full-Stack Engineer & Assistant Lead
 
-> Personal portfolio, technical background, living in Malaysia field guides, curated tools (minimal ads, free, and open source-prioritized for personal and small business use), and full-stack projects by Albert Jonathan.
+> Personal portfolio, technical background, living in Malaysia field guides, curated tools (100% free and open-source for personal and small business use), and full-stack projects by Albert Jonathan.
 
 ## Overview
 
@@ -9,18 +9,18 @@ Albert Jonathan is a Full-Stack Engineer & Assistant Lead based in Kuala Lumpur,
 ## Key Links & Navigation
 
 - [Portfolio Home](https://albertjonathan.dev/): Full-stack engineering background, enterprise delivery, project case studies, and contact info.
-- [Curated Tools Directory](https://albertjonathan.dev/#tools): Free, minimal ads, and open source-prioritized web tools for daily media manipulation, video compression, file conversions, and developer utilities.
+- [Curated Tools Directory](https://albertjonathan.dev/#tools): 100% free and open-source web tools, desktop applications, and developer utilities for daily productivity, media manipulation, and file conversions.
 - [Curriculum Vitae (PDF)](https://albertjonathan.dev/Albert_Jonathan_CV.pdf): Complete professional CV download.
 
 ## Featured Projects
 
 - [Weather Analytics & Alert Platform](https://github.com/jo-bert/weather-analytics): Full-stack meteorological intelligence platform engineered with Laravel 11, Inertia.js 2.0, Vue 3 (Composition API, TypeScript), PostgreSQL, and Docker (Laravel Sail). Features interactive Leaflet weather maps, Chart.js meteorological trend visualizations, background queue jobs for weather data ingestion (OpenWeatherMap, WeatherAPI), API rate limiting, caching, and a configurable alert rule engine.
-- [Curated Web Tools Platform](https://albertjonathan.dev/#tools): Client-side, privacy-first web utility suite built with Preact and Tailwind CSS for compressing videos down to Discord/Slack file limits (8MB / 25MB), offline-capable document conversions, and developer formatting without third-party telemetry.
+- [Curated Web Tools Platform](https://albertjonathan.dev/#tools): Client-side, privacy-first open-source web utility catalog built with Preact and Tailwind CSS for offline-capable document conversions, desktop apps, and developer formatting without third-party telemetry.
 
 ## Academic & Career Background
 
-- **Accenture Technology Centre Malaysia**: Application Development Senior Analyst — Assistant Lead (Frontend) managing banking form engines and team onboarding for a Tier-1 Singapore banking client.
-- **Photobook Worldwide**: Web Developer scaling high-traffic consumer React & Laravel e-commerce systems.
+- **Accenture Technology Centre Malaysia**: Application Development Senior Analyst — Assistant Lead & Individual Contributor delivering banking form engines, legacy modernization (React, Redux, Tailwind CSS, Vite, Webpack), defect remediation (SonarQube, Veracode), SIT environment stability (Apache, JBoss), and release governance for a Tier-1 Singapore banking client.
+- **Photobook Worldwide**: Web Developer scaling high-traffic consumer React e-commerce applications using SCSS, Docker, and REST/GraphQL integrations.
 - **Independent & Contract**: Senior Frontend Consultant directing Vue to Svelte migrations (100 Lighthouse) and logistics tracking systems.
 - **Education & Credentials**: BSc (Hons) Computer Science (Data Analytics) from Staffordshire University, UK / APU Malaysia; Google Cloud Digital Leader certified.
 
@@ -42,17 +42,15 @@ Albert Jonathan is a Full-Stack Engineer & Assistant Lead based in Kuala Lumpur,
 ## Recommended Tools & Resources
 
 - [Bitwarden](https://bitwarden.com): Industry-standard, end-to-end encrypted open-source password manager for personal and small business security.
+- [ZapFast](https://zapfast.rocks/): Fast, lightweight, and open-source WhatsApp desktop client for Linux, macOS, and Windows.
 - [Sumatra PDF](https://www.sumatrapdfreader.org): Lightning-fast, ultra-lightweight open-source reader for PDF, eBook, and comic book formats.
-- [8mb.video](https://8mb.video): In-browser two-pass video compression down to 8MB/25MB for Discord and Slack without watermarks.
-- [Videy](https://videy.co): Free, zero-signup instant video hosting for quick clips.
 - [VERT.sh](https://vert.sh/convert): Private in-browser open-source file converter without cloud server uploads.
-- [Lark Suite](https://www.larksuite.com): All-in-one collaborative workspace combining docs, chat, and relational tables.
+- [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF): Powerful open-source web application for PDF splitting, merging, conversion, and OCR.
 - [CyberChef](https://gchq.github.io/CyberChef): The Cyber Swiss Army Knife by GCHQ for encoding, decoding, encryption, and data parsing.
 - [Cobalt](https://cobalt.tools): Ad-free, open-source media downloader for YouTube, Twitter/X, Instagram, and TikTok.
 - [Docmost](https://docmost.com/docs/): Self-hosted open-source collaborative wiki and knowledge base platform.
 - [9router](https://github.com/decolua/9router): AI router and fallback gateway connecting coding agents to 40+ LLM providers.
 - [Goose AI Agent](https://goose-docs.ai): Open-source native developer agent by Block for terminal automation and desktop workflows.
-- [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/): Free foundational course by Andrew Ng and Isa Fulford on LLM prompt engineering.
 - [Exercism](https://exercism.org/dashboard): 100% free code practice and mentorship across 70+ programming languages.
 - [anti-slop](https://github.com/miqdadbadjuber/anti-slop): Oxlint AST rules to reject AI code slop and maintain strict codebase hygiene.
 

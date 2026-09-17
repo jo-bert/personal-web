@@ -5,9 +5,11 @@ import {
   ExternalLink, 
   Sparkles, 
   Wrench, 
+  Monitor,
   Terminal
 } from 'lucide-react';
 import { DAILY_TOOLS_DATA } from '../data/dailyTools.ts';
+import { DESKTOP_APPS_DATA } from '../data/desktopApps.ts';
 import { DEV_ARSENAL_DATA } from '../data/devArsenal.ts';
 import { Language, TRANSLATIONS } from '../i18n/translations.ts';
 
@@ -17,7 +19,7 @@ interface ToolsPageProps {
 }
 
 export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
-  const [activeTab, setActiveTab] = useState<'daily' | 'dev'>('daily');
+  const [activeTab, setActiveTab] = useState<'daily' | 'desktop' | 'dev'>('daily');
   const [searchQuery, setSearchQuery] = useState('');
 
   const t = TRANSLATIONS[language].toolsPage;
@@ -27,6 +29,17 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
     const q = searchQuery.toLowerCase();
 
     return DAILY_TOOLS_DATA.filter((tool) =>
+      tool.name.toLowerCase().includes(q) ||
+      tool.tag.toLowerCase().includes(q) ||
+      tool.description.toLowerCase().includes(q)
+    );
+  }, [searchQuery]);
+
+  // Filter desktop apps
+  const filteredDesktop = useMemo(() => {
+    const q = searchQuery.toLowerCase();
+
+    return DESKTOP_APPS_DATA.filter((tool) =>
       tool.name.toLowerCase().includes(q) ||
       tool.tag.toLowerCase().includes(q) ||
       tool.description.toLowerCase().includes(q)
@@ -71,10 +84,10 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
         </p>
       </div>
 
-      {/* Main Switcher: Daily Web Tools vs Developer Tools */}
+      {/* Main Switcher: Daily Web Tools vs Desktop App vs Developer Stack */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border-subtle)] mb-8">
         
-        <div className="tools-switcher flex gap-2 p-1 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
+        <div className="tools-switcher flex flex-wrap gap-2 p-1 rounded-xl bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]">
           <button
             type="button"
             aria-pressed={activeTab === 'daily'}
@@ -87,6 +100,20 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
           >
             <Wrench className="w-4 h-4" />
             <span>{t.dailyTab} ({DAILY_TOOLS_DATA.length})</span>
+          </button>
+
+          <button
+            type="button"
+            aria-pressed={activeTab === 'desktop'}
+            onClick={() => setActiveTab('desktop')}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
+              activeTab === 'desktop'
+                ? 'bg-[var(--bg-surface)] text-[var(--accent-primary)] shadow-sm'
+                : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+            }`}
+          >
+            <Monitor className="w-4 h-4" />
+            <span>{t.desktopTab} ({DESKTOP_APPS_DATA.length})</span>
           </button>
 
           <button
@@ -119,85 +146,151 @@ export const ToolsPage: React.FC<ToolsPageProps> = ({ language, onBack }) => {
       </div>
 
       {/* Content Area */}
-      {activeTab === 'daily' ? (
+      {activeTab === 'daily' && (
         <div>
           <div className="mb-6 text-xs text-[var(--text-muted)] flex items-center justify-between">
             <span>Showing {filteredDaily.length} recommended utilities</span>
             <span>{t.verifiedBadge}</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {filteredDaily.map((tool, idx) => (
-              <a
-                key={idx}
-                href={tool.url}
-                target="_blank"
-                rel="noreferrer"
-                className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
-                      {tool.tag}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      {tool.isFavorite && (
-                        <span className="inline-flex items-center gap-1 text-xs text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-medium">
-                          <Sparkles className="w-3 h-3" />
-                          <span>Favorite</span>
-                        </span>
-                      )}
-                      <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
+          {filteredDaily.length === 0 ? (
+            <div className="py-12 text-center text-sm text-[var(--text-muted)] bg-[var(--bg-surface-subtle)] rounded-2xl border border-[var(--border-subtle)]">
+              {t.noResults}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {filteredDaily.map((tool, idx) => (
+                <a
+                  key={idx}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+                        {tool.tag}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        {tool.isFavorite && (
+                          <span className="inline-flex items-center gap-1 text-xs text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-medium">
+                            <Sparkles className="w-3 h-3" />
+                            <span>Favorite</span>
+                          </span>
+                        )}
+                        <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
+                      </div>
                     </div>
+
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                      {tool.name}
+                    </h3>
+
+                    <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {tool.description}
+                    </p>
                   </div>
-
-                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                    {tool.name}
-                  </h3>
-
-                  <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {tool.description}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-      ) : (
+      )}
+
+      {activeTab === 'desktop' && (
+        <div>
+          <div className="mb-6 text-xs text-[var(--text-muted)] flex items-center justify-between">
+            <span>Showing {filteredDesktop.length} desktop applications</span>
+            <span>{t.verifiedBadge}</span>
+          </div>
+
+          {filteredDesktop.length === 0 ? (
+            <div className="py-12 text-center text-sm text-[var(--text-muted)] bg-[var(--bg-surface-subtle)] rounded-2xl border border-[var(--border-subtle)]">
+              {t.noResults}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {filteredDesktop.map((app, idx) => (
+                <a
+                  key={idx}
+                  href={app.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+                        {app.tag}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        {app.isFavorite && (
+                          <span className="inline-flex items-center gap-1 text-xs text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-medium">
+                            <Sparkles className="w-3 h-3" />
+                            <span>Favorite</span>
+                          </span>
+                        )}
+                        <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                      {app.name}
+                    </h3>
+
+                    <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {app.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {activeTab === 'dev' && (
         <div>
           <div className="mb-6 text-xs text-[var(--text-muted)] flex items-center justify-between">
             <span>Showing {filteredDev.length} developer tools</span>
             <span>Handpicked developer stack</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {filteredDev.map((tool, idx) => (
-              <a
-                key={idx}
-                href={tool.url}
-                target="_blank"
-                rel="noreferrer"
-                className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">
-                      {tool.badge}
-                    </span>
-                    <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
+          {filteredDev.length === 0 ? (
+            <div className="py-12 text-center text-sm text-[var(--text-muted)] bg-[var(--bg-surface-subtle)] rounded-2xl border border-[var(--border-subtle)]">
+              {t.noResults}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {filteredDev.map((tool, idx) => (
+                <a
+                  key={idx}
+                  href={tool.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="tools-card group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-surface-subtle)] rounded-2xl p-5 flex flex-col justify-between transition-all hover:shadow-md cursor-pointer block"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)]">
+                        {tool.badge}
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-primary)] transition-colors" />
+                    </div>
+
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                      {tool.name}
+                    </h3>
+
+                    <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {tool.tagline}
+                    </p>
                   </div>
-
-                  <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                    {tool.name}
-                  </h3>
-
-                  <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {tool.tagline}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

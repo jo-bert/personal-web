@@ -10,11 +10,17 @@ import {
   Award,
   Globe,
   Trophy,
+  Eye,
+  Maximize2,
+  GitBranch,
+  ExternalLink,
 } from "lucide-react";
-import { PROFILE_DATA } from "../data/profile.ts";
+import { PROFILE_DATA, ProjectItem } from "../data/profile.ts";
 import { ARTICLES_DATA, Article } from "../data/articles.ts";
 import { Language, TRANSLATIONS } from "../i18n/translations.ts";
 import { ScorecardModal } from "./ScorecardModal.tsx";
+import { LacrosseGallery } from "./LacrosseGallery.tsx";
+import { ProjectScreenshotsModal } from "./ProjectScreenshotsModal.tsx";
 
 interface ProjectTechTagsProps {
   technologies: string[];
@@ -102,6 +108,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const [emailRevealed, setEmailRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [isScorecardOpen, setIsScorecardOpen] = useState(false);
+
+  const [selectedProjectScreenshots, setSelectedProjectScreenshots] =
+    useState<ProjectItem | null>(null);
 
   const [selectedScorecardEdition, setSelectedScorecardEdition] = useState<
     "2026" | "2025"
@@ -300,13 +309,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 #SumatraPDF
               </span>
               <span className='text-xs font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]'>
-                #8mb.video
+                #ZapFast
               </span>
               <span className='text-xs font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]'>
                 #StirlingPDF
-              </span>
-              <span className='text-xs font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]'>
-                #Photopea
               </span>
               <span className='text-xs font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-muted)] border border-[var(--border-subtle)]'>
                 #CyberChef
@@ -351,10 +357,38 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       {proj.title}
                     </h3>
                   </div>
-                  <span className='px-2.5 py-0.5 rounded-full text-[11px] hidden md:inline-blockfont-mono font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] shrink-0'>
+                  <span className='px-2.5 py-0.5 rounded-full text-[11px] hidden md:inline-block font-mono font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--badge-border)] shrink-0'>
                     {proj.status}
                   </span>
                 </div>
+
+                {/* Screenshot thumbnail preview */}
+                {proj.screenshots && proj.screenshots.length > 0 && (
+                  <div
+                    onClick={() => setSelectedProjectScreenshots(proj)}
+                    className='relative rounded-xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] cursor-pointer group/thumb my-2 bg-[var(--bg-surface-subtle)] transition-all shadow-xs'
+                    title='Click to preview application screenshots'
+                  >
+                    <img
+                      src={proj.screenshots[0].src}
+                      alt={proj.screenshots[0].alt}
+                      className='w-full h-44 object-cover object-top transition-transform duration-500 group-hover/thumb:scale-105'
+                      loading='lazy'
+                    />
+                    <div className='absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end justify-between p-3'>
+                      <span className='text-[11px] font-mono font-semibold text-white bg-slate-900/90 border border-slate-700/80 px-2.5 py-1 rounded-md backdrop-blur-sm flex items-center gap-1.5 shadow-sm'>
+                        <Maximize2 className='w-3 h-3 text-[var(--accent-primary)]' />
+                        <span>
+                          {t.projects.previewScreenshots} (
+                          {proj.screenshots.length})
+                        </span>
+                      </span>
+                      <span className='text-[11px] text-slate-300 font-medium hidden sm:inline-block'>
+                        Click to expand
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 <p className='text-sm text-[var(--text-secondary)] leading-relaxed'>
                   {proj.description}
@@ -376,19 +410,41 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className='pt-5 border-t border-[var(--border-subtle)] mt-5 flex items-center justify-between gap-3'>
                 <ProjectTechTags technologies={proj.technologies} />
 
-                {proj.id === "curated-web-tools" ? (
-                  <button
-                    onClick={onOpenTools}
-                    className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-primary)] hover:underline cursor-pointer shrink-0'
-                  >
-                    <span>{t.projects.openApp}</span>
-                    <ArrowRight className='w-3.5 h-3.5' />
-                  </button>
-                ) : (
-                  <span className='text-xs font-mono text-[var(--text-muted)] shrink-0'>
-                    Laravel Sail
-                  </span>
-                )}
+                <div className='flex items-center gap-3 shrink-0'>
+                  {/* {proj.repoUrl && (
+                    <a
+                      href={proj.repoUrl}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors'
+                      title='View GitHub Repository'
+                    >
+                      <GitBranch className='w-3.5 h-3.5 text-[var(--accent-primary)]' />
+                      <span>{t.projects.viewRepo}</span>
+                      <ExternalLink className='w-3 h-3 text-[var(--text-muted)]' />
+                    </a>
+                  )} */}
+
+                  {proj.id === "curated-web-tools" && (
+                    <button
+                      onClick={onOpenTools}
+                      className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-primary)] hover:underline cursor-pointer'
+                    >
+                      <span>{t.projects.openApp}</span>
+                      <ArrowRight className='w-3.5 h-3.5' />
+                    </button>
+                  )}
+
+                  {proj.screenshots && proj.screenshots.length > 0 && (
+                    <button
+                      onClick={() => setSelectedProjectScreenshots(proj)}
+                      className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-primary)] hover:underline cursor-pointer'
+                    >
+                      <Eye className='w-3.5 h-3.5' />
+                      <span>{t.projects.previewScreenshots}</span>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -418,41 +474,79 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </span>
             </div>
             <div className='text-xs font-semibold text-[var(--accent-primary)] mb-3'>
-              Application Development Senior Analyst — Assistant Lead (Frontend)
+              Application Development Senior Analyst — Assistant Lead & IC
             </div>
             <ul className='space-y-2 text-sm text-[var(--text-secondary)]'>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
                   Assistant lead and acting frontend lead for a Singapore
-                  banking client in Accenture, delivering digital loan and
-                  account opening flows and managing engineer onboarding across
-                  existing projects.
+                  banking client in Accenture, defining architecture standards,
+                  delivering digital loan and onboarding flows, and managing
+                  engineer onboarding.
                 </span>
               </li>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
-                  Led legacy React modernization serving 30,000+ users: achieved
-                  75% faster builds and ~50% code reduction.
+                  Resolved complex frontend/backend defects (including
+                  responsive CSS animation bugs), reviewed 15+ pull requests
+                  monthly to eliminate regressions before SIT, and remediated
+                  code smells and security vulnerabilities guided by{" "}
+                  <strong>SonarQube</strong> and <strong>Veracode</strong> (0
+                  major vulnerabilities).
                 </span>
               </li>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
-                  Delivered 3 Spring Boot microservices with 30+ JUnit tests,
-                  achieving 0 major vulnerabilities under Veracode banking
-                  standards.
+                  Led legacy React modernization serving 30,000+ users:
+                  modernized state management with <strong>Redux</strong>,
+                  engineered 10+ reusable UI components using{" "}
+                  <strong>Tailwind CSS</strong> and React Hook Form, and
+                  streamlined build pipelines with <strong>Vite</strong> and{" "}
+                  <strong>Webpack</strong> (75% faster builds, ~50% code
+                  reduction, 80+ Jest/RTL unit tests at ~90% coverage).
+                </span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
+                <span>
+                  Delivered 3 Spring Boot microservices (REST endpoints, Spring
+                  Security, Hibernate/Oracle DB); maintained SIT environments (
+                  <strong>Apache HTTP Server</strong>, <strong>JBoss</strong>,{" "}
+                  <strong>Jenkins</strong>) as first responder, and migrated
+                  builds from <strong>Maven</strong> to <strong>Gradle</strong>{" "}
+                  (30% faster builds).
+                </span>
+              </li>
+              <li className='flex items-start gap-2'>
+                <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
+                <span>
+                  Integrated <strong>TeamSite CMS</strong> for
+                  localization/legal term and implemented{" "}
+                  <strong>Adobe Experience Manager (AEM)</strong> user tracking
+                  across 3 websites.
                 </span>
               </li>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
                   Won the <strong>2023 Innovation Champion</strong> award for
-                  engineering process improvements.
+                  contributing full stack.
                 </span>
               </li>
             </ul>
+            <div className='flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-[var(--border-subtle)]'>
+              {PROFILE_DATA.experiences[0].technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className='text-[11px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]'
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Role 2: Photobook */}
@@ -472,28 +566,41 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
-                  Maintained and extended a global React consumer platform (MUI,
-                  SCSS), delivering improvements across SEO metadata, payment
-                  checkout flows, and product preview components.
+                  Maintained and extended the core consumer platform using{" "}
+                  <strong>React</strong> and <strong>SCSS</strong>, delivering
+                  enhancements across SEO metadata, payment checkout flows,
+                  auto-apply vouchers, and product previews.
                 </span>
               </li>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
-                  Diagnosed and resolved critical production incidents via
-                  Laravel hotfixes and root-cause log analysis in Kibana across
-                  SQL and REST/GraphQL services.
+                  Diagnosed and resolved critical production frontend incidents
+                  via root-cause log analysis in <strong>Kibana</strong> during
+                  bi-monthly L3 on-call support rotations.
                 </span>
               </li>
               <li className='flex items-start gap-2'>
                 <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                 <span>
-                  Containerized the Laravel back-office and React frontend with
-                  Docker for consistent developer environments and cloud-native
-                  deployments on AWS.
+                  Engineered 20+ responsive data tables and integrated
+                  third-party image editor SDKs for 4M+ global customers;
+                  containerized the React frontend with <strong>Docker</strong>{" "}
+                  for AWS deployments; authored automated test suites with{" "}
+                  <strong>Jest</strong> and <strong>Enzyme</strong>.
                 </span>
               </li>
             </ul>
+            <div className='flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-[var(--border-subtle)]'>
+              {PROFILE_DATA.experiences[1].technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className='text-[11px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]'
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Role 3: Freelance Frontend Developer */}
@@ -525,6 +632,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </span>
               </li>
             </ul>
+            <div className='flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-[var(--border-subtle)]'>
+              {PROFILE_DATA.experiences[2].technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className='text-[11px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]'
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Role 4: Alps Finance */}
@@ -556,6 +673,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </span>
               </li>
             </ul>
+            <div className='flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-[var(--border-subtle)]'>
+              {PROFILE_DATA.experiences[3].technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className='text-[11px] font-mono px-2 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] text-[var(--text-secondary)] border border-[var(--border-subtle)]'
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -603,49 +730,54 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
 
           {/* Certifications & Languages Column */}
-          <div className='space-y-3'>
-            <h3 className='text-xs font-mono uppercase tracking-wider text-[var(--accent-primary)] font-bold flex items-center gap-1.5'>
-              <Award className='w-4 h-4' />
-              <span>{t.academic.certifications}</span>
-            </h3>
+          <div className='space-y-4'>
+            <div className='space-y-3'>
+              <h3 className='text-xs font-mono uppercase tracking-wider text-[var(--accent-primary)] font-bold flex items-center gap-1.5'>
+                <Award className='w-4 h-4' />
+                <span>{t.academic.certifications}</span>
+              </h3>
 
-            {PROFILE_DATA.certifications.map((cert, idx) => (
-              <div
-                key={idx}
-                className='bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-5 space-y-1 shadow-sm'
-              >
-                <div className='flex items-start justify-between gap-2'>
-                  <h4 className='text-sm font-bold text-[var(--text-primary)]'>
-                    {cert.name}
-                  </h4>
-                  <span className='text-xs font-mono text-[var(--text-muted)] shrink-0'>
-                    {cert.date}
-                  </span>
-                </div>
-                <p className='text-xs font-semibold text-[var(--text-secondary)]'>
-                  {cert.issuer}
-                </p>
-              </div>
-            ))}
-
-            {/* Languages card */}
-            <div className='bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-5 space-y-2 shadow-sm'>
-              <div className='text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold flex items-center gap-1.5'>
-                <Globe className='w-3.5 h-3.5' />
-                <span>{t.academic.languages}</span>
-              </div>
-              <div className='flex flex-wrap gap-2 pt-0.5'>
-                {PROFILE_DATA.languages.map((lang, lIdx) => (
-                  <span
-                    key={lIdx}
-                    className='text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-surface-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
-                  >
-                    <strong>{lang.language}</strong>{" "}
-                    <span className='text-[var(--text-muted)]'>
-                      ({lang.proficiency})
+              {PROFILE_DATA.certifications.map((cert, idx) => (
+                <div
+                  key={idx}
+                  className='bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-5 space-y-1 shadow-sm'
+                >
+                  <div className='flex items-start justify-between gap-2'>
+                    <h4 className='text-sm font-bold text-[var(--text-primary)]'>
+                      {cert.name}
+                    </h4>
+                    <span className='text-xs font-mono text-[var(--text-muted)] shrink-0'>
+                      {cert.date}
                     </span>
-                  </span>
-                ))}
+                  </div>
+                  <p className='text-xs font-semibold text-[var(--text-secondary)]'>
+                    {cert.issuer}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Languages Section with its own Header */}
+            <div className='space-y-3'>
+              <h3 className='text-xs font-mono uppercase tracking-wider text-[var(--accent-primary)] font-bold flex items-center gap-1.5'>
+                <Globe className='w-4 h-4' />
+                <span>{t.academic.languages}</span>
+              </h3>
+
+              <div className='bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-5 shadow-sm'>
+                <div className='flex flex-wrap gap-2'>
+                  {PROFILE_DATA.languages.map((lang, lIdx) => (
+                    <span
+                      key={lIdx}
+                      className='text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-surface-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)]'
+                    >
+                      <strong>{lang.language}</strong>{" "}
+                      <span className='text-[var(--text-muted)]'>
+                        ({lang.proficiency})
+                      </span>
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -756,23 +888,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
           </div>
 
-          {/* Athletic stats grid */}
-          <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 py-5'>
-            {PROFILE_DATA.athletics.stats.map((st, idx) => (
-              <div
-                key={idx}
-                className='bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)] rounded-xl p-3'
-              >
-                <div className='text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider'>
-                  {st.label}
-                </div>
-                <div className='text-xs sm:text-sm font-bold text-[var(--text-primary)] mt-1'>
-                  {st.value}
-                </div>
-              </div>
-            ))}
-          </div>
-
           <div className='pt-2 space-y-2 text-sm text-[var(--text-secondary)]'>
             <p className='leading-relaxed'>
               {PROFILE_DATA.athletics.description}
@@ -788,6 +903,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </li>
               ))}
             </ul>
+
+            {/* Photo Gallery: Scroll-Snap Reel */}
+            {PROFILE_DATA.athletics.photos &&
+              PROFILE_DATA.athletics.photos.length > 0 && (
+                <LacrosseGallery
+                  photos={PROFILE_DATA.athletics.photos}
+                  language={language}
+                />
+              )}
 
             {PROFILE_DATA.athletics.officiatingLog &&
               PROFILE_DATA.athletics.officiatingLog.length > 0 && (
@@ -850,7 +974,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                                   className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-primary)] hover:underline cursor-pointer'
                                 >
                                   <Trophy className='w-3.5 h-3.5 text-amber-400' />
-                                  <span>{t.athletics.viewScorecard} (2026)</span>
+                                  <span>
+                                    {t.athletics.viewScorecard} (2026)
+                                  </span>
                                   <ArrowRight className='w-3 h-3' />
                                 </button>
                               </div>
@@ -863,7 +989,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                                   className='inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-primary)] hover:underline cursor-pointer'
                                 >
                                   <Trophy className='w-3.5 h-3.5 text-amber-400' />
-                                  <span>{t.athletics.viewScorecard} (2025)</span>
+                                  <span>
+                                    {t.athletics.viewScorecard} (2025)
+                                  </span>
                                   <ArrowRight className='w-3 h-3' />
                                 </button>
                               </div>
@@ -965,6 +1093,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
         language={language}
         initialEdition={selectedScorecardEdition}
       />
+
+      {/* Weather App Project Screenshots Modal */}
+      {selectedProjectScreenshots && (
+        <ProjectScreenshotsModal
+          project={selectedProjectScreenshots}
+          onClose={() => setSelectedProjectScreenshots(null)}
+          language={language}
+        />
+      )}
     </div>
   );
 };
