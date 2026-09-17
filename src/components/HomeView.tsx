@@ -29,7 +29,7 @@ interface ProjectTechTagsProps {
 const ProjectTechTags: React.FC<ProjectTechTagsProps> = ({ technologies }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  if (technologies.length <= 4) {
+  if (technologies.length <= 5) {
     return (
       <div className='flex flex-wrap gap-1.5 items-center'>
         {technologies.map((tech, tIdx) => (
@@ -133,10 +133,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
     if (!emailRevealed) {
       setEmailRevealed(true);
     } else {
-      navigator.clipboard.writeText(email);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).catch(() => {});
+      }
+
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 2000);
-      window.location.href = `mailto:${email}`;
     }
   };
 
@@ -365,9 +367,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 {/* Screenshot thumbnail preview */}
                 {proj.screenshots && proj.screenshots.length > 0 && (
                   <div
+                    role='button'
+                    tabIndex={0}
                     onClick={() => setSelectedProjectScreenshots(proj)}
-                    className='relative rounded-xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] cursor-pointer group/thumb my-2 bg-[var(--bg-surface-subtle)] transition-all shadow-xs'
-                    title='Click to preview application screenshots'
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedProjectScreenshots(proj);
+                      }
+                    }}
+                    className='relative rounded-xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] cursor-pointer group/thumb my-2 bg-[var(--bg-surface-subtle)] transition-all shadow-xs focus:outline-hidden focus:ring-2 focus:ring-[var(--accent-primary)]'
+                    aria-label={`${proj.title} - ${t.projects.previewScreenshots}`}
+                    title={t.projects.clickToExpand}
                   >
                     <img
                       src={proj.screenshots[0].src}
@@ -384,7 +395,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                         </span>
                       </span>
                       <span className='text-[11px] text-slate-300 font-medium hidden sm:inline-block'>
-                        Click to expand
+                        {t.projects.clickToExpand}
                       </span>
                     </div>
                   </div>
@@ -410,8 +421,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className='pt-5 border-t border-[var(--border-subtle)] mt-5 flex items-center justify-between gap-3'>
                 <ProjectTechTags technologies={proj.technologies} />
 
-                <div className='flex items-center gap-3 shrink-0'>
-                  {/* {proj.repoUrl && (
+                <div className='flex flex-col items-center gap-3 shrink-0'>
+                  {proj.repoUrl && (
                     <a
                       href={proj.repoUrl}
                       target='_blank'
@@ -423,7 +434,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                       <span>{t.projects.viewRepo}</span>
                       <ExternalLink className='w-3 h-3 text-[var(--text-muted)]' />
                     </a>
-                  )} */}
+                  )}
 
                   {proj.id === "curated-web-tools" && (
                     <button
@@ -1025,8 +1036,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {ARTICLES_DATA.map((article) => (
             <div
               key={article.id}
+              role='button'
+              tabIndex={0}
               onClick={() => onOpenArticle(article)}
-              className='py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer group hover:bg-[var(--bg-surface-subtle)]/50 px-2 rounded-xl transition-colors'
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onOpenArticle(article);
+                }
+              }}
+              aria-label={article.title}
+              className='py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer group hover:bg-[var(--bg-surface-subtle)]/50 px-2 rounded-xl transition-colors focus:outline-hidden focus:ring-2 focus:ring-[var(--accent-primary)]'
             >
               <div>
                 <div className='text-xs font-mono text-[var(--text-muted)] flex flex-wrap items-center gap-2 mb-1'>

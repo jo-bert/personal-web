@@ -328,8 +328,8 @@ export const ScorecardModal: React.FC<ScorecardModalProps> = ({
                             <span
                               className={`px-1.5 py-0.5 rounded font-semibold text-[10px] ${
                                 match.divisionCode === "M"
-                                  ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                                  : "bg-rose-500/10 text-rose-400 border border-rose-500/20"
+                                  ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                                  : "bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20"
                               }`}
                             >
                               {match.divisionCode === "M"
@@ -342,12 +342,12 @@ export const ScorecardModal: React.FC<ScorecardModalProps> = ({
 
                           <div className='flex items-center gap-1.5'>
                             {match.type === "officiated" ? (
-                              <span className='px-2 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 flex items-center gap-1'>
+                              <span className='px-2 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-500/20 flex items-center gap-1'>
                                 <Shield className='w-2.5 h-2.5' />
                                 <span>Referee</span>
                               </span>
                             ) : (
-                              <span className='px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1'>
+                              <span className='px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1'>
                                 <Users className='w-2.5 h-2.5' />
                                 <span>Played</span>
                               </span>
@@ -433,7 +433,7 @@ export const ScorecardModal: React.FC<ScorecardModalProps> = ({
                               <span>{match.note}</span>
                             </span>
                             {match.result === "win" && (
-                              <span className='text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'>
+                              <span className='text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30'>
                                 Win
                               </span>
                             )}

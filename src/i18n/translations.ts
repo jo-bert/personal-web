@@ -49,7 +49,7 @@ export const TRANSLATIONS = {
     toolsBanner: {
       tag: "Curated Resources & Utilities",
       title: "Web Tools & Open-Source Utilities",
-      desc: "A handpicked collection of free, minimal-ads, and open source-prioritized tools for small business and personal use.",
+      desc: "A handpicked collection of 100% free and open-source tools for everyday file conversions, document viewing, password management, and developer workflows.",
       button: "Explore Tools Directory",
     },
     projects: {
@@ -62,6 +62,7 @@ export const TRANSLATIONS = {
       previewScreenshots: "Screenshots",
       viewRepo: "GitHub Repo",
       screensModalTitle: "Application Screenshots",
+      clickToExpand: "Click to expand",
     },
     hackathons: {
       tag: "Annual Engineering Ritual",
@@ -100,6 +101,8 @@ export const TRANSLATIONS = {
         "No referee assignments on Day 3 (competed in placement playoff matches as player).",
       scorecardYourTeam: "Your Team",
       galleryTitle: "Tournament Moments • KLFS 2026",
+      gallerySubtitle:
+        "Dual role documentation: officiating international fixtures and competing in Men's Sixes.",
       galleryPrev: "Previous photos",
       galleryNext: "Next photos",
       galleryClose: "Close preview",
@@ -165,7 +168,7 @@ export const TRANSLATIONS = {
     toolsBanner: {
       tag: "Koleksi Sumber Daya & Utilitas",
       title: "Alat Web & Utilitas Open-Source",
-      desc: "Koleksi alat web gratis, minim iklan, dan mengutamakan open-source untuk kebutuhan bisnis kecil dan personal: kompresi video ke 8MB/25MB (Discord/Slack), konversi format file, edit foto di browser, dan manipulasi PDF yang aman.",
+      desc: "Koleksi pilihan alat web dan utilitas 100% gratis serta open-source untuk kebutuhan harian: manipulasi PDF, konversi berkas, keamanan kata sandi, dan alur kerja developer.",
       button: "Jelajahi Direktori Alat",
     },
     projects: {
@@ -178,6 +181,7 @@ export const TRANSLATIONS = {
       previewScreenshots: "Tangkapan Layar",
       viewRepo: "Repo GitHub",
       screensModalTitle: "Tangkapan Layar Aplikasi",
+      clickToExpand: "Klik untuk perbesar",
     },
     hackathons: {
       tag: "Ritual Rekayasa Tahunan",

@@ -11,8 +11,37 @@ const ArticleModal = lazy(() => import('./components/ArticleModal.tsx').then((m)
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'tools'>('home');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [isDark, setIsDark] = useState(() => window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false);
+
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const stored = localStorage.getItem('theme');
+
+    if (stored === 'dark' || stored === 'light') {
+      return stored === 'dark';
+    }
+
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+  });
+
   const [language, setLanguage] = useState<Language>(() => getInitialLanguage());
+
+  // Sync theme to root element and localStorage
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (isDark) {
+      root.classList.add('dark', 'dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark', 'dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  // Sync lang attribute
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   // Sync hash with page
   useEffect(() => {
@@ -45,7 +74,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen text-[var(--text-primary)] flex flex-col font-sans selection:bg-blue-200 dark:selection:bg-blue-900 ${isDark ? 'dark-mode' : ''}`}>
+    <div className={`min-h-screen text-[var(--text-primary)] flex flex-col font-sans selection:bg-blue-200 dark:selection:bg-blue-900 ${isDark ? 'dark dark-mode' : ''}`}>
       
       {/* Top Header */}
       <Header

@@ -86,7 +86,6 @@ export const ProjectScreenshotsModal: React.FC<
                 {project.status}
               </span>
               <span className='text-xs font-mono text-[var(--text-muted)] flex items-center gap-1'>
-                <Images className='w-3.5 h-3.5 text-[var(--accent-primary)]' />
                 <span>
                   {activeIndex + 1} / {screenshots.length}
                 </span>
@@ -187,7 +186,7 @@ export const ProjectScreenshotsModal: React.FC<
                 onClick={() => setActiveIndex(idx)}
                 className={`relative rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                   activeIndex === idx
-                    ? "border-[var(--accent-primary)] ring-2 ring-[var(--accent-primary)]/20 scale-102"
+                    ? "border-[var(--accent-primary)] ring-2 ring-[var(--accent-primary)]/20 scale-[1.02]"
                     : "border-[var(--border-subtle)] opacity-60 hover:opacity-100"
                 }`}
               >

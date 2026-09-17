@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Clock, Calendar, ExternalLink } from 'lucide-react';
 import { Article } from '../data/articles.ts';
 
@@ -8,6 +8,26 @@ interface ArticleModalProps {
 }
 
 export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) => {
+  useEffect(() => {
+    if (!article) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [article, onClose]);
+
   if (!article) return null;
 
   const renderFormattedText = (text: string) => {
@@ -35,8 +55,17 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
-      <div className="article-dialog relative w-full max-w-2xl my-8 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--text-primary)] max-h-[88vh] overflow-y-auto">
+    <div
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="article-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-sm overflow-y-auto animate-fadeIn"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="article-dialog relative w-full max-w-2xl my-8 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl shadow-xl p-6 sm:p-8 text-[var(--text-primary)] max-h-[88vh] overflow-y-auto animate-scaleUp"
+      >
         
         {/* Top bar */}
         <div className="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)] gap-4">
@@ -47,6 +76,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
           <button
             onClick={onClose}
             className="p-1.5 rounded-lg bg-[var(--bg-surface-subtle)] hover:bg-[var(--bg-surface-hover)] text-[var(--text-secondary)] transition-colors cursor-pointer"
+            aria-label="Close article modal"
             title="Close"
           >
             <X className="w-5 h-5" />
@@ -55,7 +85,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
 
         {/* Title */}
         <div className="pt-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] leading-tight tracking-tight">
+          <h2 id="article-modal-title" className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] leading-tight tracking-tight">
             {article.title}
           </h2>
           <div className="flex items-center gap-4 text-xs font-mono text-[var(--text-muted)] mt-3">

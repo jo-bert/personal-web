@@ -25,9 +25,11 @@ export const Header: React.FC<HeaderProps> = ({
     <header className='sticky top-0 z-40 backdrop-blur-md bg-[var(--bg-page)]/90 border-b border-[var(--border-subtle)] transition-colors duration-200'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between'>
         {/* Brand */}
-        <div
+        <button
+          type='button'
           onClick={() => onNavigate("home")}
-          className='cursor-pointer group flex items-center gap-2.5'
+          aria-label='Albert Jonathan - Go to homepage'
+          className='cursor-pointer group flex items-center gap-2.5 bg-transparent border-0 p-0 text-left'
         >
           <span className='font-bold tracking-tight text-lg text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors'>
             Albert Jonathan
@@ -35,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
           <span className='hidden sm:inline-block text-xs font-mono text-[var(--text-secondary)] px-2.5 py-0.5 rounded-md bg-[var(--bg-surface-subtle)] border border-[var(--border-subtle)]'>
             {t.role}
           </span>
-        </div>
+        </button>
 
         {/* Navigation Actions */}
         <div className='flex items-center gap-2 sm:gap-2.5'>
@@ -108,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
               {currentPage === "tools" ? t.profile : t.tools}
             </span>
             <span className='sm:hidden'>
-              {currentPage === "tools" ? t.profile : "Tools"}
+              {currentPage === "tools" ? t.profile : t.tools}
             </span>
           </button>
 

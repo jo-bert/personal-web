@@ -29,7 +29,9 @@
   --badge-text: #1d4ed8;
 }
 
-.dark-mode {
+.dark-mode,
+:root.dark,
+:root.dark-mode {
   color-scheme: dark;
   /* Slate & Cobalt Blue Dark Mode */
   --bg-page: #0b0f17;
@@ -96,7 +98,12 @@
 }
 
 .dark-mode body,
-body:has(.dark-mode) {
+:root.dark body,
+:root.dark-mode body,
+body.dark-mode,
+body.dark,
+body:has(.dark-mode),
+body:has(.dark) {
   background-color: #0b0f17;
   background-image: 
     radial-gradient(#1e293b 0.75px, transparent 0.75px), 
@@ -105,12 +112,16 @@ body:has(.dark-mode) {
   background-position: 0 0, 15px 15px;
 }
 
-.dark-mode ::-webkit-scrollbar-track { background: #0f172a; }
-.dark-mode ::-webkit-scrollbar-thumb { background: #334155; }
-.dark-mode ::-webkit-scrollbar-thumb:hover { background: #475569; }
+.dark-mode ::-webkit-scrollbar-track,
+:root.dark ::-webkit-scrollbar-track { background: #0f172a; }
+.dark-mode ::-webkit-scrollbar-thumb,
+:root.dark ::-webkit-scrollbar-thumb { background: #334155; }
+.dark-mode ::-webkit-scrollbar-thumb:hover,
+:root.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
 /* Dark mode header */
-.dark-mode header {
+.dark-mode header,
+:root.dark header {
   background-color: rgba(11, 15, 23, 0.88) !important;
   border-color: #1e293b !important;
 }
@@ -172,4 +183,34 @@ body:has(.dark-mode) {
 }
 .dark-mode .article-dialog a {
   color: var(--accent-primary) !important;
+}
+
+/* Animations for Modals and Lightboxes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn,
+.animate-in.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.2s ease-out;
 }
