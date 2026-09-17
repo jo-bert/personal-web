@@ -5,7 +5,6 @@ import {
   ChevronRight,
   ExternalLink,
   GitBranch,
-  Images,
 } from "lucide-react";
 import { ProjectItem } from "../data/profile.ts";
 import { Language, TRANSLATIONS } from "../i18n/translations.ts";

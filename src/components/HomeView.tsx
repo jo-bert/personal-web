@@ -409,9 +409,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   {proj.highlights.map((h, hIdx) => (
                     <li
                       key={hIdx}
-                      className='flex items-start gap-2 text-xs text-[var(--text-secondary)]'
+                      className='flex items-start gap-2 text-sm text-[var(--text-secondary)]'
                     >
-                      <CheckCircle2 className='w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5' />
+                      <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -907,9 +907,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {PROFILE_DATA.athletics.highlights.map((hl, hlIdx) => (
                 <li
                   key={hlIdx}
-                  className='flex items-start gap-2 text-xs text-[var(--text-secondary)]'
+                  className='flex items-start gap-2 text-sm text-[var(--text-secondary)]'
                 >
-                  <CheckCircle2 className='w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5' />
+                  <CheckCircle2 className='w-4 h-4 text-emerald-500 shrink-0 mt-0.5' />
                   <span>{hl}</span>
                 </li>
               ))}

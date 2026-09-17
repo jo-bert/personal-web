@@ -107,7 +107,7 @@ export const DevArsenalSection: React.FC = () => {
               {/* Status footer */}
               <div className="mt-5 pt-3 border-t border-slate-800/70 flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>Production Tested</span>
                 </div>
                 <span>Regulated Banking & Scale</span>
